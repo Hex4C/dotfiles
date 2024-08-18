@@ -872,34 +872,6 @@ require('lazy').setup({
     end,
   },
 
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v3.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-      'MunifTanjim/nui.nvim',
-    },
-    config = function()
-      require('neo-tree').setup {
-        close_if_last_window = true,
-        filesystem = {
-          --'open_default',
-          -- "open_current",
-          hijack_netrw_behavior = 'disabled',
-        },
-        window = {
-          width = 30,
-          position = 'right',
-        },
-        open_on_startup = false,
-      }
-
-      -- Set global key mapping to toggle Neo-tree with Ctrl+b
-      vim.keymap.set('n', '<C-b>', ':Neotree toggle<CR>', { noremap = true, silent = true })
-    end,
-  },
-
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
@@ -913,7 +885,7 @@ require('lazy').setup({
   require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`

@@ -3,23 +3,28 @@
 
 return {
   'nvim-neo-tree/neo-tree.nvim',
-  version = '*',
+  branch = 'v3.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
   },
-  cmd = 'Neotree',
-  keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal' },
-  },
-  opts = {
-    filesystem = {
-      window = {
-        mappings = {
-          ['\\'] = 'close_window',
-        },
+  config = function()
+    require('neo-tree').setup {
+      close_if_last_window = true,
+      filesystem = {
+        --'open_default',
+        -- "open_current",
+        hijack_netrw_behavior = 'disabled',
       },
-    },
-  },
+      window = {
+        width = 30,
+        position = 'right',
+      },
+      open_on_startup = false,
+    }
+
+    -- Set global key mapping to toggle Neo-tree with Ctrl+b
+    vim.keymap.set('n', '<C-b>', ':Neotree toggle<CR>', { noremap = true, silent = true })
+  end,
 }
