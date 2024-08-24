@@ -15,7 +15,7 @@ return {
       filesystem = {
         --'open_default',
         -- "open_current",
-        hijack_netrw_behavior = 'disabled',
+        -- hijack_netrw_behavior = 'disabled',
       },
       window = {
         width = 30,
