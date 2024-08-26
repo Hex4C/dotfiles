@@ -13,18 +13,18 @@ return {
     require('neo-tree').setup {
       close_if_last_window = true,
       filesystem = {
-        --'open_default',
+        -- 'open_default',
         -- "open_current",
         -- hijack_netrw_behavior = 'disabled',
       },
       window = {
+        position = 'float',
         width = 30,
-        position = 'right',
       },
       open_on_startup = false,
     }
 
     -- Set global key mapping to toggle Neo-tree with Ctrl+b
-    vim.keymap.set('n', '<C-b>', ':Neotree toggle<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', '<C-b>', ':Neotree toggle right<CR>', { noremap = true, silent = true })
   end,
 }
