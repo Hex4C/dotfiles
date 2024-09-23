@@ -18,7 +18,7 @@
 ========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
 ========                                                     ========
 =====================================================================
-=====================================================================
+
 
 What is Kickstart?
 
@@ -449,7 +449,11 @@ require('lazy').setup({
         -- clangd = {},
         gopls = {},
         pyright = {},
-        rust_analyzer = {},
+        rust_analyzer = {
+          on_attach = function(_, bufnr)
+            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+          end,
+        },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -546,6 +550,21 @@ require('lazy').setup({
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
       },
     },
+  },
+  {
+    'saecki/crates.nvim',
+    tag = 'stable',
+    config = function()
+      local crates = require 'crates'
+      crates.setup()
+
+      vim.keymap.set('n', '<leader>ct', crates.toggle, { desc = '[c]rates [t]oggle', silent = true })
+      vim.keymap.set('n', '<leader>cr', crates.reload, { desc = '[c]rates [r]eload', silent = true })
+      vim.keymap.set('n', '<leader>cc', crates.show_crate_popup, { desc = '[c]rates show [c]rate info', silent = true })
+      vim.keymap.set('n', '<leader>cf', crates.show_features_popup, { desc = '[c]rates show [f]eatures', silent = true })
+      vim.keymap.set('n', '<leader>cv', crates.show_versions_popup, { desc = '[c]rates show [v]ersions', silent = true })
+      vim.keymap.set('n', '<leader>cd', crates.show_dependencies_popup, { desc = '[c]rates show [d]ependencies', silent = true })
+    end,
   },
 
   -- Nvim autocompletion (Moved to seperate file)
