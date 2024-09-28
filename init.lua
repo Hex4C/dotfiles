@@ -477,9 +477,15 @@ require('lazy').setup({
             },
           },
         },
+        -- Web development
         html = {},
         svelte = {},
         tailwindcss = {},
+        -- Maybe replace this typescript ls with the typescript-tools.nvim
+        -- plugin if it gets slow, or if I want more tools.
+        ts_ls = {},
+        jsonls = {},
+        prismals = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -549,6 +555,7 @@ require('lazy').setup({
         zig = { 'zigfmt' },
         rust = { 'rustfmt ' },
         svelte = { 'prettier' },
+        typescript = { 'prettier' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
