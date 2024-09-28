@@ -459,9 +459,6 @@ require('lazy').setup({
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
-        -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
-        --
 
         lua_ls = {
           -- cmd = {...},
@@ -478,6 +475,7 @@ require('lazy').setup({
           },
         },
         -- Web development
+        -- Since all of these are using default settings it's overkill to have them here
         html = {},
         svelte = {},
         tailwindcss = {},
@@ -498,7 +496,10 @@ require('lazy').setup({
 
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
-      local ensure_installed = vim.tbl_keys(servers or {})
+      --
+      -- This row combines servers with ensure_installed
+      -- local ensure_installed = vim.tbl_keys(servers or {})
+      local ensure_installed = {}
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'black', -- Used to format python code
