@@ -568,7 +568,7 @@ require('lazy').setup({
     tag = 'stable',
     config = function()
       local crates = require 'crates'
-      crates.setup()
+      crates.setup {}
 
       vim.keymap.set('n', '<leader>ct', crates.toggle, { desc = '[c]rates [t]oggle', silent = true })
       vim.keymap.set('n', '<leader>cr', crates.reload, { desc = '[c]rates [r]eload', silent = true })
@@ -594,6 +594,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+      -- catppuccin-macchiato is the slightly lighter version of mocha
       vim.cmd.colorscheme 'catppuccin-mocha'
 
       -- You can configure highlights by doing something like:
