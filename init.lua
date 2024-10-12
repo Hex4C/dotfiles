@@ -19,6 +19,13 @@
 ========                                                     ========
 =====================================================================
 
+-- Folke Highlights...
+-- PERF: Pref 
+-- HACK: Lifehack :P
+-- TODO: Something I should do...
+-- NOTE: Yeah, note to be added
+-- FIX:: Should be fixed asap
+-- WARNING: Varning, varning... 
 
 What is Kickstart?
 
