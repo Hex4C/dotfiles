@@ -25,6 +25,7 @@
 -- TODO: Something I should do...
 -- NOTE: Yeah, note to be added
 -- FIX:: Should be fixed asap
+-- BUG:: Fungerar också...
 -- WARNING: Varning, varning... 
 
 What is Kickstart?
@@ -632,7 +633,22 @@ require('lazy').setup({
   },
 
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  {
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    keys = {
+      {
+        '<leader>st',
+        function()
+          vim.cmd 'silent! TodoTelescope'
+        end,
+        mode = 'n',
+        desc = '[S]Search [T]odo',
+      },
+    },
+    opts = { signs = false },
+  },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
