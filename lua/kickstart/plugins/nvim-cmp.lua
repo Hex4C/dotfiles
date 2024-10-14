@@ -39,6 +39,44 @@ return { -- Autocompletion
     -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
+
+    local lsp_icons = {
+      Array = ' ',
+      Boolean = '󰨙 ',
+      Class = ' ',
+      Color = ' ',
+      Constant = '󰏿 ',
+      Constructor = ' ',
+      Enum = ' ',
+      EnumMember = ' ',
+      Event = ' ',
+      Field = ' ',
+      File = ' ',
+      Folder = ' ',
+      Function = '󰊕 ',
+      Interface = ' ',
+      Key = ' ',
+      Keyword = ' ',
+      Method = '󰊕 ',
+      Module = ' ',
+      Namespace = '󰦮 ',
+      Null = ' ',
+      Number = '󰎠 ',
+      Object = ' ',
+      Operator = ' ',
+      Package = ' ',
+      Property = ' ',
+      Reference = ' ',
+      Snippet = ' ',
+      String = ' ',
+      Struct = '󰆼 ',
+      Text = ' ',
+      TypeParameter = ' ',
+      Unit = ' ',
+      Value = ' ',
+      Variable = '󰀫 ',
+    }
+
     luasnip.config.setup {}
 
     cmp.setup {
@@ -111,6 +149,38 @@ return { -- Autocompletion
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'path' },
+        { name = 'buffer' },
+      },
+      formatting = {
+        fields = { 'abbr', 'kind', 'menu' },
+        expandable_indicator = false, -- This will show when an item is expandable
+        -- NOTE: entry istället för _ om det ska vara en expandable entry
+        format = function(_, item)
+          -- Add icons to LSP kinds
+          if lsp_icons[item.kind] then
+            item.kind = lsp_icons[item.kind] .. item.kind
+          end
+
+          -- Define truncation widths for 'abbr' and 'menu'
+          local widths = {
+            abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
+            menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
+          }
+
+          -- Truncate the 'abbr' and 'menu' fields if they exceed the width
+          for key, width in pairs(widths) do
+            if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
+              item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. '…'
+            end
+          end
+
+          -- Handle expandable indicator (if using snippets or other expandable items)
+          -- if entry.completion_item and entry.completion_item.insertTextFormat == 2 then
+          --   item.kind = item.kind .. ' ➤'
+          -- end
+
+          return item
+        end,
       },
     }
   end,
