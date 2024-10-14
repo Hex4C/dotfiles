@@ -151,10 +151,16 @@ return { -- Autocompletion
         { name = 'path' },
         { name = 'buffer' },
       },
+      -- NOTE: Border if you'd like it later
+      --
+      -- window = {
+      --   completion = cmp.config.window.bordered(),
+      --   documentation = cmp.config.window.bordered(),
+      -- },
       formatting = {
         fields = { 'abbr', 'kind', 'menu' },
         expandable_indicator = false, -- This will show when an item is expandable
-        -- NOTE: entry istället för _ om det ska vara en expandable entry
+        -- NOTE: entry instead of _ if I want the expandable entry...
         format = function(_, item)
           -- Add icons to LSP kinds
           if lsp_icons[item.kind] then
