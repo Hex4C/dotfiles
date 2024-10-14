@@ -27,7 +27,6 @@ return { -- Autocompletion
       },
     },
     'saadparwaiz1/cmp_luasnip',
-
     -- Adds other completion capabilities.
     --  nvim-cmp does not ship with all sources by default. They are split
     --  into multiple repos for maintenance purposes.
@@ -102,10 +101,28 @@ return { -- Autocompletion
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
 
         -- Accept ([y]es) the completion.
+        -- See more examples here:
+        --
+        -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#safely-select-entries-with-cr
+        --
         --  This will auto-import if your LSP supports it.
         --  This will expand snippets if the LSP sent a snippet.
+        -- NOTE: Different completion alternatives
+        --
         -- ['<C-y>'] = cmp.mapping.confirm { select = true },
         ['<CR>'] = cmp.mapping.confirm { select = true },
+        --
+        -- ['<CR>'] = cmp.mapping {
+        --   i = function(fallback)
+        --     if cmp.visible() and cmp.get_active_entry() then
+        --       cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
+        --     else
+        --       fallback()
+        --     end
+        --   end,
+        --   s = cmp.mapping.confirm { select = true },
+        --   c = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
+        -- },
 
         -- If you prefer more traditional completion keymaps,
         -- you can uncomment the following lines
