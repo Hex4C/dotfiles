@@ -479,11 +479,13 @@ require('lazy').setup({
         -- clangd = {},
         gopls = {},
         pyright = {},
-        rust_analyzer = {
-          on_attach = function(_, bufnr)
-            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-          end,
-        },
+        -- NOTE: rust_analyzer is being setup by rustaceanvim
+        --
+        -- rust_analyzer = {
+        --   on_attach = function(_, bufnr)
+        --     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+        --   end,
+        -- },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -539,6 +541,7 @@ require('lazy').setup({
 
       require('mason-lspconfig').setup {
         handlers = {
+          rust_analyzer = function() end,
           function(server_name)
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
@@ -551,7 +554,11 @@ require('lazy').setup({
       }
     end,
   },
-
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^5', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
   { -- Autoformat
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
