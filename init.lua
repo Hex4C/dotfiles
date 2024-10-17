@@ -591,7 +591,9 @@ require('lazy').setup({
         python = { 'black' },
         go = { 'gofmt' },
         zig = { 'zigfmt' },
-        rust = { 'rustfmt ' },
+        -- NOTE: Rustfmt is handeled by rustaceanvim (lsp fallback)
+        --
+        -- rust = { 'rustfmt ' },
         svelte = { 'prettier' },
         typescript = { 'prettier' },
         --
