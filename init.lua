@@ -680,6 +680,10 @@ require('lazy').setup({
       -- Add icons
       require('mini.icons').setup()
 
+      -- Add comments fix (mainly for rust)
+      -- // Would become //test in rust
+      require('mini.comment').setup()
+
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin

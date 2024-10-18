@@ -110,8 +110,8 @@ return { -- Autocompletion
         -- NOTE: Different completion alternatives
         --
         -- ['<C-y>'] = cmp.mapping.confirm { select = true },
-        ['<Tab>'] = cmp.mapping.confirm { select = true },
-        -- ['<CR>'] = cmp.mapping.confirm { select = true },
+        -- ['<Tab>'] = cmp.mapping.confirm { select = true },
+        ['<CR>'] = cmp.mapping.confirm { select = true },
         --
         -- ['<CR>'] = cmp.mapping {
         --   i = function(fallback)
