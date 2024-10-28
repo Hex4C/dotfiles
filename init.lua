@@ -101,6 +101,11 @@ vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
 
+-- Disable vim basic intro messages
+vim.opt.shortmess:append 'I'
+-- Completely disable it
+vim.opt.shortmess:append 'c'
+
 -- Enable break indent
 vim.opt.breakindent = true
 
