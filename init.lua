@@ -521,6 +521,7 @@ require('lazy').setup({
         ts_ls = {},
         jsonls = {},
         prismals = {},
+        emmet_language_server = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -535,8 +536,8 @@ require('lazy').setup({
       -- for you, so that they are available from within Neovim.
       --
       -- This row combines servers with ensure_installed
-      -- local ensure_installed = vim.tbl_keys(servers or {})
-      local ensure_installed = {}
+      local ensure_installed = vim.tbl_keys(servers or {})
+      -- local ensure_installed = {}
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'black', -- Used to format python code
