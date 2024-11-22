@@ -514,13 +514,13 @@ require('lazy').setup({
         -- Web development
         -- Since all of these are using default settings it's overkill to have them here
         html = {},
-        svelte = {},
+        -- svelte = {},
         tailwindcss = {},
         -- Maybe replace this typescript ls with the typescript-tools.nvim
         -- plugin if it gets slow, or if I want more tools.
         ts_ls = {},
         jsonls = {},
-        prismals = {},
+        -- prismals = {},
         emmet_language_server = {},
       }
 
