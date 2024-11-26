@@ -156,7 +156,12 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', 'ä', '{')
 vim.keymap.set('n', 'ö', '}')
 
+-- Easier to type : when not on a good keyboard
 vim.keymap.set('n', '.', ':')
+
+-- Move codeblocks when in visual mode
+vim.keymap.set('v', '<S-J>', ":m '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set('v', '<S-K>', ":m '<-2<CR>gv=gv", { silent = true })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
