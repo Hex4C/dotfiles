@@ -563,6 +563,7 @@ require('lazy').setup({
         -- plugin if it gets slow, or if I want more tools.
         ts_ls = {},
         jsonls = {},
+        volar = {},
         -- prismals = {},
         emmet_language_server = {},
       }
