@@ -699,6 +699,8 @@ require('lazy').setup({
     config = function()
       require('noice').setup {
         lsp = {
+          -- This is to disable some weird spam sometimes, maybe enalbe if I want more notifications in the future
+          diagnostics = false,
           -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
           override = {
             ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
