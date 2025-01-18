@@ -171,10 +171,16 @@ return { -- Autocompletion
       },
       -- NOTE: Border if you'd like it later
       --
-      -- window = {
-      --   completion = cmp.config.window.bordered(),
-      --   documentation = cmp.config.window.bordered(),
-      -- },
+      window = {
+        -- completion = cmp.config.window.bordered(),
+        -- NOTE: Only enable documentation border and not for completion aswell
+        documentation = cmp.config.window.bordered {
+          border = 'rounded',
+          -- Either comment out the row under for no colors or make the Floatbg the same as normal float. Border none works as well.
+          winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder',
+          -- max_height = 15,
+        },
+      },
       formatting = {
         fields = { 'abbr', 'kind', 'menu' },
         expandable_indicator = false, -- This will show when an item is expandable
