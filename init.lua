@@ -7,7 +7,7 @@
 ========         .----------------------.   | === |          ========
 ========         |.-""""""""""""""""""-.|   |-----|          ========
 ========         ||                    ||   | === |          ========
-========         ||   KICKSTART.NVIM   ||   |-----|          ========
+========         ||   MSKOLDIS.NVIM    ||   |-----|          ========
 ========         ||                    ||   | === |          ========
 ========         ||                    ||   |-----|          ========
 ========         ||:Tutor              ||   |:::::|          ========
@@ -354,7 +354,7 @@ require('lazy').setup({
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
 
-  require 'kickstart.plugins.telescope',
+  require 'mskoldis.plugins.telescope',
 
   -- LSP Plugins
   {
@@ -669,7 +669,7 @@ require('lazy').setup({
   },
 
   -- Nvim autocompletion (Moved to seperate file)
-  require 'kickstart.plugins.nvim-cmp',
+  require 'mskoldis.plugins.nvim-cmp',
 
   { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
   { -- You can easily change to a different colorscheme.
@@ -697,6 +697,7 @@ require('lazy').setup({
       -- add any options here
     },
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require('noice').setup {
         lsp = {
           -- This is to disable some weird spam sometimes, maybe enalbe if I want more notifications in the future
@@ -750,6 +751,23 @@ require('lazy').setup({
     opts = { signs = false },
   },
 
+  -- Markdown preview, opens a webbrowser on localhost to render and preview the current markdown
+  -- document if the preview is started.
+  {
+    'iamcco/markdown-preview.nvim',
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+    ft = { 'markdown' },
+    build = function()
+      require('lazy').load { plugins = { 'markdown-preview.nvim' } }
+      vim.fn['mkdp#util#install']()
+    end,
+  },
+  -- can be started
+  -- :MarkdownPreview
+  --
+  -- and stopped with:
+  -- :MarkdownpreviewStop
+
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
@@ -796,7 +814,7 @@ require('lazy').setup({
   },
 
   -- Moved tree sitter to separate file
-  require 'kickstart.plugins.nvim-treesitter',
+  require 'mskoldis.plugins.nvim-treesitter',
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -808,10 +826,10 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug,
-  require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.lint',
-  require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.neo-tree',
+  require 'mskoldis.plugins.indent_line',
+  require 'mskoldis.plugins.lint',
+  require 'mskoldis.plugins.autopairs',
+  require 'mskoldis.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
