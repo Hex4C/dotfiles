@@ -1,0 +1,58 @@
+================================================================================
+Table of Contents                               *gitguide table of contents*
+
+1. Introduction                                          |gitguide-intro|
+2. Commit messages                                       |git-messages|
+3. Branch naming                                         |git-branch-naming|
+4. Useful commands                                       |git-useful-messages|
+================================================================================
+1. INTRODUCTION                                     *gitguide*
+
+This gitguide is meant as a reference guide for git commit/branch naming
+best practicies and some good github commands. In a project where naming
+standards for commits etc are already defined it's better to follow them.
+
+================================================================================
+2. COMMIT MESSAGES
+
+A list of common commit types:
+- `fix:` patches a bug or fixes a bug in the codebase. (PATCH in semantic)
+- `feat:` Introduces a new feature to the codebase. (MINOR in semantic)
+- `BREAKING CHANGE:` Usually in the footer (description) or appends a `!`.
+- `release:` For a release verison.
+- `docs:` Change related to the docs
+- `chore:` Simple addition, not really needed alwyas (not a feat).
+- `style:` Style changes such as convering tabs to spaces.
+- `refactor:` Rewrite parts of the codebase with the same functionality.
+- `test:` Testing related commits.
+
+All of these are a general guidelines and sometimes can be have a `()` to
+highlight a certain part of the code. For example `feat(api)!:` which would
+translate to an api addition which includes breaking changes.
+
+================================================================================
+3. BRANCH NAMING
+
+Branch naming conventions are a little bit different and also project specific
+a lot of the times. Here's a general guideline for a new project:
+
+For example the words in () are optional names:
+- `feature (feat/new/)/new-feature`
+- `bugfix (bug/)/login-issue`
+- `hotfix (fix/)/critical-issue-in-prod`
+- `docs/update-readme`
+
+Linking to issues:
+- `(above names)/issue-id`
+- `(above names)/issue-id/short-desc`
+
+More personalized brach naming could be:
+- `name/(above names)/issue-id/short-desc`
+
+================================================================================
+4. USEFUL COMMANDS
+
+Some useful commands will be added here later...
+Protip is lazygit: https://github.com/jesseduffield/lazygit
+
+ vim:tw=78:ts=8:ft=help:norl:
