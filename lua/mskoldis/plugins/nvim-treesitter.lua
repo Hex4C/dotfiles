@@ -35,7 +35,7 @@ return {
     config = function()
       require('treesitter-context').setup {
         enable = true,
-        max_lines = 10,
+        max_lines = 5,
         trim_scope = 'outer',
         patterns = {
           default = {
