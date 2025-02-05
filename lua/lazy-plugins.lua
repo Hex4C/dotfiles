@@ -11,65 +11,65 @@
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
 
-  require 'core.plguins',
-  -- require 'core.plugins.vim-sleuth',
+  -- import = 'core.plugins',
+  require 'core.plugins.vim-sleuth',
+
+  require 'core.plugins.gitsigns',
+  -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
-  -- require 'core.plugins.gitsigns',
-  -- -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
-  -- --
-  -- -- This is often very useful to both group configuration, as well as handle
-  -- -- lazy loading plugins that don't need to be loaded immediately at startup.
-  -- --
-  -- -- For example, in the following configuration, we use:
-  -- --  event = 'VimEnter'
-  -- --
-  -- -- which loads which-key before all the UI elements are loaded. Events can be
-  -- -- normal autocommands events (`:help autocmd-events`).
-  -- --
-  -- -- Then, because we use the `config` key, the configuration only runs
-  -- -- after the plugin has been loaded:
-  -- --  config = function() ... end
-  -- --
-  -- require 'core.plugins.which-key',
+  -- This is often very useful to both group configuration, as well as handle
+  -- lazy loading plugins that don't need to be loaded immediately at startup.
   --
-  -- -- NOTE: Plugins can specify dependencies.
-  -- --
-  -- -- The dependencies are proper plugin specifications as well - anything
-  -- -- you do for a plugin at the top level, you can do for a dependency.
-  -- --
-  -- -- Use the `dependencies` key to specify the dependencies of a particular plugin
+  -- For example, in the following configuration, we use:
+  --  event = 'VimEnter'
   --
-  -- require 'core.plugins.telescope',
+  -- which loads which-key before all the UI elements are loaded. Events can be
+  -- normal autocommands events (`:help autocmd-events`).
   --
-  -- -- LSP Plugins
-  -- require 'core.plugins.lsp',
+  -- Then, because we use the `config` key, the configuration only runs
+  -- after the plugin has been loaded:
+  --  config = function() ... end
   --
-  -- require 'core.plugins.rustaceanvim',
+  require 'core.plugins.which-key',
+
+  -- NOTE: Plugins can specify dependencies.
   --
-  -- require 'core.plugins.conform',
+  -- The dependencies are proper plugin specifications as well - anything
+  -- you do for a plugin at the top level, you can do for a dependency.
   --
-  -- require 'core.plugins.crates',
-  --
-  -- require 'core.plugins.nvim-cmp',
-  --
-  -- require 'core.plugins.themes',
-  --
-  -- require 'core.plugins.noice',
-  --
-  -- require 'core.plugins.todo-comments',
-  --
-  -- require 'core.plugins.zen-mode',
-  --
-  -- require 'core.plugins.markdown-preview',
-  --
-  -- require 'core.plugins.mini',
-  --
-  -- require 'core.plugins.nvim-treesitter',
-  --
-  -- require 'core.plugins.indent_line',
-  -- require 'core.plugins.lint',
-  -- require 'core.plugins.autopairs',
-  -- require 'core.plugins.neo-tree',
+  -- Use the `dependencies` key to specify the dependencies of a particular plugin
+
+  require 'core.plugins.telescope',
+
+  -- LSP Plugins
+  require 'core.plugins.lsp',
+
+  require 'core.plugins.rustaceanvim',
+
+  require 'core.plugins.conform',
+
+  require 'core.plugins.crates',
+
+  require 'core.plugins.nvim-cmp',
+
+  require 'core.plugins.themes',
+
+  require 'core.plugins.noice',
+
+  require 'core.plugins.todo-comments',
+
+  require 'core.plugins.zen-mode',
+
+  require 'core.plugins.markdown-preview',
+
+  require 'core.plugins.mini',
+
+  require 'core.plugins.nvim-treesitter',
+
+  require 'core.plugins.indent_line',
+  require 'core.plugins.lint',
+  require 'core.plugins.autopairs',
+  require 'core.plugins.neo-tree',
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
