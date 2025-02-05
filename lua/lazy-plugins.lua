@@ -44,23 +44,23 @@ require('lazy').setup({
   -- LSP Plugins
   require 'core.plugins.lsp',
 
-  require 'core.plugins.rustaceanvim',
+  -- require 'core.plugins.rustaceanvim',
 
   require 'core.plugins.conform',
 
-  require 'core.plugins.crates',
+  -- require 'core.plugins.crates',
 
   require 'core.plugins.nvim-cmp',
 
   require 'core.plugins.themes',
 
-  require 'core.plugins.noice',
+  -- require 'core.plugins.noice',
 
   require 'core.plugins.todo-comments',
 
-  require 'core.plugins.zen-mode',
+  -- require 'core.plugins.zen-mode',
 
-  require 'core.plugins.markdown-preview',
+  -- require 'core.plugins.markdown-preview',
 
   require 'core.plugins.mini',
 
@@ -87,7 +87,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
