@@ -5,6 +5,16 @@ return {
     -- add any options here
   },
   config = function()
+    -- NOTE: Potentially limit the size of notify view.
+
+    -- math.floor((vim.o.columns * 4) / 10)
+    -- math.floor((vim.o.lines * 3) / 10)
+    -- ---@diagnostic disable-next-line: missing-fields
+    -- require('notify').setup {
+    --   max_width = 50,
+    --   max_height = 10,
+    -- }
+
     ---@diagnostic disable-next-line: missing-fields
     require('noice').setup {
       lsp = {

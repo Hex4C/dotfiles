@@ -109,9 +109,12 @@ return { -- Autocompletion
         --  This will expand snippets if the LSP sent a snippet.
         -- NOTE: Different completion alternatives
         --
-        -- ['<C-y>'] = cmp.mapping.confirm { select = true },
+        ['<C-y>'] = cmp.mapping.confirm { select = true },
         -- ['<Tab>'] = cmp.mapping.confirm { select = true },
-        ['<CR>'] = cmp.mapping.confirm { select = true },
+        -- ['<CR>'] = cmp.mapping.confirm { select = true },
+        -- ['<C-CR>'] = cmp.mapping.confirm { select = true },
+        --
+        -- NOTE: better <CR> to avoid auto adding chars
         --
         -- ['<CR>'] = cmp.mapping {
         --   i = function(fallback)
@@ -196,7 +199,6 @@ return { -- Autocompletion
             abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
             menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
           }
-
           -- Truncate the 'abbr' and 'menu' fields if they exceed the width
           for key, width in pairs(widths) do
             if item[key] and vim.fn.strdisplaywidth(item[key]) > width then

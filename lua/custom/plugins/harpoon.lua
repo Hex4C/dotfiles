@@ -21,7 +21,7 @@ return {
 
     vim.keymap.set('n', '<C-e>', function()
       harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts)
-    end)
+    end, { desc = 'Open the Harpoon quick menu' })
 
     -- NOTE: telescope window but Harpoon window is more minimalistic
     --
