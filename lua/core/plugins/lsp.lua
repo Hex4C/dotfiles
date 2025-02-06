@@ -209,7 +209,6 @@ return {
         -- Web development
         -- Since all of these are using default settings it's overkill to have them here
         html = {},
-        -- svelte = {},
         tailwindcss = {},
         -- Maybe replace this typescript ls with the typescript-tools.nvim
         -- plugin if it gets slow, or if I want more tools.
