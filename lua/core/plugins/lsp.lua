@@ -215,7 +215,6 @@ return {
         ts_ls = {},
         jsonls = {},
         volar = {},
-        -- prismals = {},
         emmet_language_server = {},
       }
 
