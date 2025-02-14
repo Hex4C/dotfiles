@@ -1,7 +1,2 @@
-tags
-test.sh
-.luarc.json
-nvim
-
-spell/
-lazy-lock.json
+# Ignore tmux installed plugins
+tmux/.config/tmux/plugins

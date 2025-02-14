@@ -1,0 +1,15 @@
+[user]
+	name = Hex4C
+	email = 58385827+Hex4C@users.noreply.github.com
+
+[alias]
+	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
+	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+	jelindeb = !git config user.name "jelindeb" && git config user.email "jelindeb@kth.se"
+	unset = !git config --unset user.name && git config --unset user.email
+	pr = pull --rebase
+[core]
+	editor = nvim
+	ignorecase = false
+[init]
+	defaultBranch = Main
