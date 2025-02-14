@@ -8,8 +8,9 @@
 	jelindeb = !git config user.name "jelindeb" && git config user.email "jelindeb@kth.se"
 	unset = !git config --unset user.name && git config --unset user.email
 	pr = pull --rebase
+	fp = fetch --prune
 [core]
 	editor = nvim
 	ignorecase = false
 [init]
-	defaultBranch = Main
+	defaultBranch = main
