@@ -1,4 +1,9 @@
+<img src="assets/banner.png" alt="Kurzgesagt banner for style points">
+Image: Kurzgesagt
+
 # Hex4C Dot files
+
+
 This is my private repository for managing and storing my dotfiles for unix systems. 
 Mainly Linux and macOS
 
