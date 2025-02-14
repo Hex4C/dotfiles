@@ -1,0 +1,62 @@
+# Imports
+# WARNING: IMPORT ÄR DEPRECATED!!! 
+# import = [
+#   # "~/.config/alacritty/catppuccin-mocha.toml" # For catpuccin mocha theme
+# ]
+
+# [shell]
+# program = "/bin/zsh"
+
+[window]
+startup_mode = "Windowed"
+title = "Alacritty"
+dynamic_title = true 
+# Drag around window with cmd key (super key)
+# cmd + ^ (option) + f for fullscreen
+decorations = "buttonless" # You can minimize the window by cmd + m, or turn this to "full option"
+dimensions = { columns = 175, lines = 48 }
+position = {x = 110, y = 150}
+dynamic_padding = true
+option_as_alt = "OnlyLeft"
+
+[font]
+size = 14
+normal = { family = "MesloLGS NF", style= "Regular" }
+bold = { family = "MesloLGS NF", style = "Regular" }
+italic = { family = "MesloLGS NF", style = "Italic"}
+bold_italic = { family = "MesloLGS NF", style = "Bold_Italic" }
+
+# Added iterm2 colours, to feel more at home lol
+# They are slightly darkened... (Except cyan since it's nice)
+[colors]
+# Default colors
+draw_bold_text_with_bright_colors = true
+primary = { background = '#000000', foreground = '#bbbbbb', bright_foreground = "#ffffff" }
+
+
+# Normal colors
+[colors.normal]
+black   = '#000000'
+red     = '#cc4444'
+green   = '#44cc44'
+yellow  = '#cccc44'
+blue    = '#4444cc'
+magenta = '#cc44cc'
+cyan    = '#8ef9fd'
+white   = '#cdcdcd'
+
+# Bright colors
+[colors.bright]
+black   = '#444444'
+red     = '#cc4444'
+green   = '#44cc44'
+yellow  = '#cccc44'
+blue    = '#4444cc'
+magenta = '#cc44cc'
+cyan    = '#8ef9fd'
+white   = '#ffffff'
+
+# Supposedly fix some colours?
+[env]
+TERM = "xterm-256color"
+WINIT_X11_SCALE_FACTOR = "1.0"
