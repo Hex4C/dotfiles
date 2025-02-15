@@ -8,10 +8,12 @@ font-family-bold-italic = "MesloLGS NF Bold Italic"
 font-size = 14
 font-feature = -calt, -liga, -dlig
 
+cursor-opacity = 0.65
 cursor-style = block 
 cursor-style-blink = false
 shell-integration-features = no-cursor
 
+# Toggle full screen with fn + f on mac
 window-width = 165
 window-height = 44
 window-save-state = never
