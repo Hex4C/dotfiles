@@ -23,6 +23,11 @@ packages.
 2. `cd ~/.dotfiles`
 3. `stow <package>`
 
+### For tmux
+
+1. `git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm`
+2. `stow tmux` as usual
+
 ### Example
 
 ```console
@@ -32,6 +37,13 @@ stow lazygit
 stow nvim
 stow tmux
 ```
+
+It can also be written as (on a single line):
+
+```console
+stow zsh-linux git lazygit nvim tmux
+```
+
 
 #### Stowing specific files with stow
 
