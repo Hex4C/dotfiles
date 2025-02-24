@@ -21,4 +21,5 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-\assets
+\assets # assets for readme style
+\vscode-dontstow # vscode settings, backup in this repo
