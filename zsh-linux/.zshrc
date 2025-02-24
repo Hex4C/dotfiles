@@ -198,3 +198,11 @@ export FZF_ALT_C_OPTS=$FZF_ALT_C_OPTS'
   --color=border:#262626,label:#aeaeae,query:#d9d9d9
   --border="rounded" --border-label="" --preview-window="border-rounded" --prompt="> "
   --marker=">" --pointer="◆" --separator="─" --scrollbar="│" --preview "tree -L 2 {}"'
+
+# pnpm
+export PNPM_HOME="/home/jesper/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
