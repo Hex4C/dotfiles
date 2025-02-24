@@ -1,13 +1,13 @@
 <img src="assets/banner.png" alt="Kurzgesagt banner for style points">
-Image: Kurzgesagt
+<span style="color: #555555">Image: Kurzgesagt</span>
 
-# Hex4C Dot files
+# 🌠 Hex4C Dot files
 
 
 This is my private repository for managing and storing my dotfiles for unix systems. 
 Mainly Linux and macOS
 
-## Requirements
+## ⚙️ Requirements 
 
 I utilise GNU stow for storing all of my .config files. I have a specific setup for
 macOS and linux where there's two versions of .zshrc due to the OS:es utilising different
@@ -17,7 +17,7 @@ packages.
 - git
 
 
-## Usage
+## 💻 Usage
 
 1. Clone the repository `git clone git@github.com:Hex4C/dotfiles.git ~/.dotfiles`
 2. `cd ~/.dotfiles`
@@ -55,11 +55,11 @@ but can be done with the command:
 For example the command `stow -d ~/.dotfiles -t ~ vim` would tell stow to look for the package `~/.dotfiles/vim` 
 and stow it in the `~` diretory.
 
-## Viewing the stowed files
+## ✨ Viewing the stowed files
 The files can be viewed by their difference in colours in most terminals or with the `ls -la` command
 which will display the symlinks as `file123 -> original file..`.
 
-## stow ignore file
+## 🌱 stow ignore file
 
 The link below is the default stow ignore file and at the moment no specific stow ignore file has been created.
 
