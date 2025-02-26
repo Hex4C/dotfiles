@@ -44,23 +44,13 @@ require('lazy').setup({
   -- LSP Plugins
   require 'core.plugins.lsp',
 
-  -- require 'core.plugins.rustaceanvim',
-
   require 'core.plugins.conform',
-
-  -- require 'core.plugins.crates',
 
   require 'core.plugins.nvim-cmp',
 
   require 'core.plugins.themes',
 
-  -- require 'core.plugins.noice',
-
   require 'core.plugins.todo-comments',
-
-  -- require 'core.plugins.zen-mode',
-
-  -- require 'core.plugins.markdown-preview',
 
   require 'core.plugins.mini',
 
@@ -70,6 +60,9 @@ require('lazy').setup({
   require 'core.plugins.lint',
   require 'core.plugins.autopairs',
   require 'core.plugins.neo-tree',
+
+  -- BUG: Import the debogger here later
+  -- require 'core.plugins.debug',
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -87,6 +80,8 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
+  -- NOTE: This import all of my custom plugins in the custom/plugins/* folder
+  --
   { import = 'custom.plugins' },
 }, {
   ui = {
