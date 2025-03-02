@@ -19,9 +19,9 @@ return {
       harpoon:list():add()
     end, { desc = '[a]dd to Harpoon' })
 
-    vim.keymap.set('n', '<leader>h', function()
+    vim.keymap.set('n', '<leader>g', function()
       harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts)
-    end, { desc = '[H]arpoon quick menu' })
+    end, { desc = '[G] Harpoon quick menu' })
 
     -- NOTE: telescope window but Harpoon window is more minimalistic
     --
