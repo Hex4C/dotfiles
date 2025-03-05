@@ -19,15 +19,6 @@ vim.keymap.set('v', '<S-K>', ":m '<-2<CR>gv=gv", { silent = true })
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
--- Global diagnostic settings
-vim.diagnostic.config {
-  virtual_text = true,
-  signs = true,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = true,
-}
-
 -- Behöver inte riktigt det här, overkill
 -- -- Enable diagnostics automatically for all buffers
 -- vim.api.nvim_create_autocmd('BufEnter', {
