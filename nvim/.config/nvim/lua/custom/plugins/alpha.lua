@@ -52,14 +52,20 @@ return {
 
     require('alpha').setup(dashboard.opts)
 
+    -- NOTE: Display performance. Always seeing the time it takes makes me
+    -- trip and my mind wanders away when working. Will only display the info
+    -- if the loadtime is over a predefined threshold.
+
     vim.api.nvim_create_autocmd('User', {
       once = true,
       pattern = 'LazyVimStarted',
       callback = function()
         local stats = require('lazy').stats()
         local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-        dashboard.section.footer.val = '⚡ Neovim loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms'
-        pcall(vim.cmd.AlphaRedraw)
+        if ms > 200 then
+          dashboard.section.footer.val = '⚡ Neovim loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms'
+          pcall(vim.cmd.AlphaRedraw)
+        end
       end,
     })
   end,
