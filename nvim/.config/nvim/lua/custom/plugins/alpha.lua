@@ -20,7 +20,9 @@ return {
     -- stylua: ignore
     dashboard.section.buttons.val = {
       dashboard.button("f", " " .. " Find file",       "<cmd> Telescope find_files<cr>"),
-      dashboard.button("n", " " .. " New file",        [[<cmd> ene <BAR> startinsert <cr>]]),
+      dashboard.button("e", " " .. " File explorer",   "<cmd> Neotree float <cr>"),
+      -- BUG: Currently a little bit broken, will look into it more later
+      -- dashboard.button("n", " " .. " New file",        [[<cmd> ene <BAR> startinsert <cr>]]),
       dashboard.button("r", " " .. " Recent files",    [[<cmd> Telescope oldfiles<cr>]]),
       dashboard.button("c", " " .. " Config",          "<cmd> Telescope find_files cwd=~/.config/nvim <cr>"),
       dashboard.button("l", "󰒲 " .. " Lazy",            "<cmd> Lazy <cr>"),
