@@ -3,7 +3,6 @@
 
 # 🌠 Hex4C Dot files
 
-
 This is my private repository for managing and storing my dotfiles for unix systems. 
 Mainly Linux and macOS
 
@@ -13,9 +12,13 @@ I utilise GNU stow for storing all of my .config files. I have a specific setup 
 macOS and linux where there's two versions of .zshrc due to the OS:es utilising different
 packages.
 
-- GNU stow 
 - git
+- GNU stow 
+- Other apps such as nvim, tmux...
 
+On Mac I recommend using brew for ALL package management if possible rather than spreading it out in the system. Makes it easier to clean up if needed.
+
+For Linux, a rolling release distro works best since packages are continuously however most of them can be manually installed on more stable distros, such as Debian.
 
 ## 💻 Usage
 
@@ -41,7 +44,7 @@ stow tmux
 It can also be written as (on a single line):
 
 ```console
-stow zsh-linux git lazygit nvim tmux
+stow zsh-linux git lazygit nvim tmux ghostty
 ```
 
 
