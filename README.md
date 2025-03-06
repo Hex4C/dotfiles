@@ -39,6 +39,7 @@ stow git
 stow lazygit
 stow nvim
 stow tmux
+stow ghostty
 ```
 
 It can also be written as (on a single line):
