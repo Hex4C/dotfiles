@@ -26,5 +26,6 @@ return {
 
     -- Set global key mapping to toggle Neo-tree with Ctrl+b
     vim.keymap.set('n', '<C-b>', ':Neotree toggle left<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>wr', ':Neotree reveal left<CR>', { noremap = true, silent = true, desc = '[W]orkspace [R]eveal file' })
   end,
 }
