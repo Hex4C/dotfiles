@@ -15,7 +15,15 @@ vim.g.rustaceanvim = {
   --   end,
   --   default_settings = {
   --     -- rust-analyzer language server configuration
-  --     ['rust-analyzer'] = {},
+  ['rust-analyzer'] = {
+    cargo = {
+      allFeatures = true,
+      loadOutDirsFromCheck = true,
+      buildScripts = {
+        enable = true,
+      },
+    },
+  },
   --   },
   -- },
   -- -- DAP configuration
