@@ -172,8 +172,6 @@ alias java="java.exe"
 # On launch commands
 # clear
 
-[ -f "/home/jesper/.ghcup/env" ] && source "/home/jesper/.ghcup/env" # ghcup-env
-
 # fzf finder keybinds for zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
