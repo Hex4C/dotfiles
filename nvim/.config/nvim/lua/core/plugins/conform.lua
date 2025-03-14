@@ -29,7 +29,7 @@ return {
       lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
       python = { 'black' },
-      go = { 'gofmt' },
+      go = { 'gofumpt' },
       zig = { 'zigfmt' },
       -- NOTE: Rustfmt is handeled by rustaceanvim (lsp fallback)
       --
