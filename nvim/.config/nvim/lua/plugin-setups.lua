@@ -2,31 +2,33 @@
 vim.g.rustaceanvim = {
   -- Plugin configuration
   tools = {
-    -- NOTE: Disable nextest to avoid having to install it now, probably
-    -- install in the future since it looks good, fast.
     enable_nextest = false,
   },
   -- LSP configuration
-  -- WARN: Unused code below
-  --
-  -- server = {
-  --   on_attach = function(client, bufnr)
-  --     -- you can also put keymaps in here
-  --   end,
-  --   default_settings = {
-  --     -- rust-analyzer language server configuration
-  ['rust-analyzer'] = {
-    cargo = {
-      allFeatures = true,
-      loadOutDirsFromCheck = true,
-      buildScripts = {
-        enable = true,
+  server = {
+    on_attach = function(client, bufnr)
+      local opts = { silent = true, buffer = bufnr }
+
+      -- Code Action keymap
+      vim.keymap.set({ 'n', 'x' }, '<leader>ca', function()
+        vim.cmd.RustLsp 'codeAction' -- Uses rust-analyzer's grouping
+      end, { silent = true, buffer = bufnr, desc = '[C]ode [A]ction (RUST)' })
+
+      vim.keymap.set('n', 'K', function()
+        vim.cmd.RustLsp { 'hover', 'actions' }
+      end, opts)
+    end,
+    default_settings = {
+      ['rust-analyzer'] = {
+        cargo = {
+          allFeatures = true,
+          loadOutDirsFromCheck = true,
+          buildScripts = { enable = true },
+        },
       },
     },
   },
-  --   },
-  -- },
-  -- -- DAP configuration
+  -- DAP configuration (if needed)
   -- dap = {},
 }
 
