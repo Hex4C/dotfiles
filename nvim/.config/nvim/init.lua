@@ -88,4 +88,5 @@ require 'lazy-bootstrap'
 -- Install lazy plugins
 require 'lazy-plugins'
 
+-- Add plugin setups
 require 'plugin-setups'
