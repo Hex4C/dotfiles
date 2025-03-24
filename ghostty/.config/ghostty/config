@@ -17,6 +17,8 @@ shell-integration-features = no-cursor
 window-width = 165
 window-height = 44
 window-save-state = never
+window-position-x = 50
+window-position-y = 25
 
 # May reduce performance
 #background-opacity = 0.9
