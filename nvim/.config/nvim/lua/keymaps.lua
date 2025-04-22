@@ -12,6 +12,9 @@ vim.keymap.set('n', 'ö', '}')
 -- Easier to type : when not on a good keyboard
 vim.keymap.set('n', '.', ':')
 
+vim.keymap.set('i', '<C-c>', '<Esc>')
+vim.keymap.set('n', '<C-c>', '<Esc>')
+
 -- Move codeblocks when in visual mode
 vim.keymap.set('v', '<S-J>', ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set('v', '<S-K>', ":m '<-2<CR>gv=gv", { silent = true })
