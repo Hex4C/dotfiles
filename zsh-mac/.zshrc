@@ -140,7 +140,7 @@ alias c="ccat"
 export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-export FZF_ALT_C_COMMAND='fd --type d'
+export FZF_ALT_C_COMMAND='fd --type d --hidden --exclude .git'
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
   --color=fg:#d0d0d0,fg+:#d0d0d0,bg:-1,bg+:#484848
