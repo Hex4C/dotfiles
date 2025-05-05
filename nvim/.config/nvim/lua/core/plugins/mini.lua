@@ -27,17 +27,37 @@ return {
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,
     --  and try some other statusline plugin
+    -- Load the plugin
     local statusline = require 'mini.statusline'
-    -- set use_icons to true if you have a Nerd Font
-    statusline.setup { use_icons = vim.g.have_nerd_font }
 
-    -- You can configure sections in the statusline by overriding their
-    -- default behavior. For example, here we set the section for
-    -- cursor location to LINE:COLUMN
+    -- Optional: Only use icons if you have a Nerd Font
+    statusline.setup {
+      use_icons = vim.g.have_nerd_font or false,
+    }
+
+    -- Function to show macro recording status
+    local function macro_status()
+      local reg = vim.fn.reg_recording()
+      if reg == '' then
+        return ''
+      else
+        return 'REC @' .. reg .. ' '
+      end
+    end
+
+    -- Override section_location to include macro indicator and custom format
     ---@diagnostic disable-next-line: duplicate-set-field
     statusline.section_location = function()
-      return '%2l:%-2v'
+      -- Format: REC @x 12:34 or just 12:34 if not recording
+      return macro_status() .. '%2l:%-2v'
     end
+
+    -- Redraw the statusline when macro recording starts or stops
+    vim.api.nvim_create_autocmd({ 'RecordingEnter', 'RecordingLeave' }, {
+      callback = function()
+        vim.cmd 'redrawstatus'
+      end,
+    })
 
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
