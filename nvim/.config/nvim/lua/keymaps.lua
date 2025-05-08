@@ -19,6 +19,10 @@ vim.keymap.set('n', '<C-c>', '<Esc>')
 vim.keymap.set('v', '<S-J>', ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set('v', '<S-K>', ":m '<-2<CR>gv=gv", { silent = true })
 
+vim.keymap.set('v', 'x', '"_d', { silent = true })
+vim.keymap.set('v', 'p', 'P')
+vim.keymap.set('v', 'P', 'p')
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
