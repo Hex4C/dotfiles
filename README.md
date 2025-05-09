@@ -22,7 +22,7 @@ For Linux, a rolling release distro works best since packages are continuously h
 
 ## 💻 Usage
 
-1. Clone the repository `git clone git@github.com:Hex4C/dotfiles.git ~/.dotfiles`
+1. Clone the repository `git clone https://github.com/Hex4C/dotfiles.git ~/.dotfiles`
 2. `cd ~/.dotfiles`
 3. `stow <package>`
 
