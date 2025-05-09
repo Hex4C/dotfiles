@@ -46,7 +46,8 @@ require('lazy').setup({
 
   require 'core.plugins.conform',
 
-  require 'core.plugins.nvim-cmp',
+  require 'core.plugins.blink',
+  -- require 'core.plugins.nvim-cmp',
 
   require 'core.plugins.themes',
 
@@ -58,7 +59,9 @@ require('lazy').setup({
 
   require 'core.plugins.indent_line',
   require 'core.plugins.lint',
-  require 'core.plugins.autopairs',
+
+  -- NOTE: Included in blink?
+  -- require 'core.plugins.autopairs',
   require 'core.plugins.neo-tree',
 
   -- BUG: Import the debogger here later
