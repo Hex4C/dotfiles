@@ -60,8 +60,7 @@ require('lazy').setup({
   require 'core.plugins.indent_line',
   require 'core.plugins.lint',
 
-  -- NOTE: Included in blink?
-  -- require 'core.plugins.autopairs',
+  require 'core.plugins.autopairs',
   require 'core.plugins.neo-tree',
 
   -- BUG: Import the debogger here later

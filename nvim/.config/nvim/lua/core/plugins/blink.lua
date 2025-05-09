@@ -51,8 +51,12 @@ return {
 
     -- (Default) Only show the documentation popup when manually triggered
     completion = {
+      accept = { auto_brackets = { enabled = true } },
       documentation = {
         auto_show = false,
+      },
+      ghost_text = {
+        enabled = false,
       },
       menu = {
         draw = {

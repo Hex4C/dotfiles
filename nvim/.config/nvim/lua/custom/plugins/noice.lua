@@ -32,7 +32,8 @@ return {
         override = {
           ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
           ['vim.lsp.util.stylize_markdown'] = true,
-          ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
+          -- WARNING: Not sure if the line below works due to blink.cmp instead of nvim-cmp
+          ['cmp.entry.get_documentation'] = true,
         },
         hover = {
           enabled = true,
