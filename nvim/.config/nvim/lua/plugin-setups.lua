@@ -2,6 +2,11 @@
 vim.g.rustaceanvim = {
   -- Plugin configuration
   tools = {
+    -- TODO: Install neotest
+    --
+    -- Would also require neotest and the neotest-rust adapter
+    -- To install nextest the command below.
+    -- cargo install nextest --locked
     enable_nextest = false,
   },
   -- LSP configuration
