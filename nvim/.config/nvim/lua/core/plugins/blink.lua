@@ -1,5 +1,7 @@
 return {
   'saghen/blink.cmp',
+  lazy = true,
+  event = 'BufRead',
   dependencies = {
     -- Snippet Engine
     {
