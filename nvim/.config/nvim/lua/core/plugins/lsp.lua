@@ -147,7 +147,17 @@ return {
         clangd = {},
         gopls = {},
         pyright = {},
-        lua_ls = {},
+        lua_ls = {
+          settings = {
+            Lua = {
+              completion = {
+                callSnippet = 'Replace',
+              },
+              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+              -- diagnostics = { disable = { 'missing-fields' } },
+            },
+          },
+        },
         -- Web development
         -- Since all of these are using default settings it's overkill to have them here
         html = {},
@@ -190,6 +200,11 @@ return {
         },
         ensure_installed = {},
       }
+
+      -- Much better solution for enabling lsp servers
+      for server_name, config in pairs(servers) do
+        vim.lsp.config(server_name, config)
+      end
     end,
   },
 }
