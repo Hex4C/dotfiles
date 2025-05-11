@@ -12,7 +12,7 @@
 require('lazy').setup({
 
   -- import = 'core.plugins',
-  require 'core.plugins.vim-sleuth',
+  require 'core.plugins.guess-indent',
 
   require 'core.plugins.gitsigns',
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
@@ -60,7 +60,8 @@ require('lazy').setup({
   require 'core.plugins.indent_line',
   require 'core.plugins.lint',
 
-  require 'core.plugins.autopairs',
+  -- NOTE: Removed in favour of mini.pairs
+  -- require 'core.plugins.autopairs',
   require 'core.plugins.neo-tree',
 
   -- BUG: Import the debogger here later
