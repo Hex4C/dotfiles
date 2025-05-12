@@ -25,7 +25,7 @@ return {
     require('mini.comment').setup()
 
     -- Auto pairs, same as autopairs but perhaps better?
-    require('mini.pairs').setup()
+    -- require('mini.pairs').setup()
 
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,

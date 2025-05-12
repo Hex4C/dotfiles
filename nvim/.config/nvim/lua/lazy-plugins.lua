@@ -61,7 +61,7 @@ require('lazy').setup({
   require 'core.plugins.lint',
 
   -- NOTE: Removed in favour of mini.pairs
-  -- require 'core.plugins.autopairs',
+  require 'core.plugins.autopairs',
   require 'core.plugins.neo-tree',
 
   -- BUG: Import the debogger here later
