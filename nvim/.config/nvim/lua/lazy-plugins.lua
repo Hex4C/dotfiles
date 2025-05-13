@@ -57,7 +57,7 @@ require('lazy').setup({
 
   require 'core.plugins.nvim-treesitter',
 
-  require 'core.plugins.indent_line',
+  require 'core.plugins.indent-line',
   require 'core.plugins.lint',
 
   -- NOTE: Removed in favour of mini.pairs
