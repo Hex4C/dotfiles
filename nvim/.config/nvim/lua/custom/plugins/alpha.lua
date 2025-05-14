@@ -26,7 +26,7 @@ return {
       dashboard.button("r", " " .. " Recent files",    [[<cmd> Telescope oldfiles<cr>]]),
       dashboard.button("c", " " .. " Config",          "<cmd> Telescope find_files cwd=~/.config/nvim <cr>"),
       dashboard.button("l", "󰒲 " .. " Lazy",            "<cmd> Lazy <cr>"),
-      dashboard.button("m", "" .. " Mason",            "<cmd> Mason <cr>"),
+      -- dashboard.button("m", "" .. " Mason",            "<cmd> Mason <cr>"),
       dashboard.button("q", " " .. " Quit",            "<cmd> qa <cr>"),
     }
     for _, button in ipairs(dashboard.section.buttons.val) do
