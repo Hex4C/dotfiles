@@ -18,7 +18,7 @@ window-width = 165
 window-height = 44
 window-save-state = never
 window-position-x = 50
-window-position-y = 25
+window-position-y = 22
 
 # May reduce performance
 #background-opacity = 0.9
