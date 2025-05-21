@@ -167,7 +167,7 @@ return {
         -- plugin if it gets slow, or if I want more tools.
         ts_ls = {},
         jsonls = {},
-        volar = {},
+        vue_ls = {},
         emmet_language_server = {},
       }
 
