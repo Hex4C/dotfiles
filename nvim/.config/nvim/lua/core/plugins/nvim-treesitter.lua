@@ -1,4 +1,8 @@
 return {
+
+  -- TODO:
+  -- Rewrite treesitter to use the main branch instead of the master branch.
+
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
