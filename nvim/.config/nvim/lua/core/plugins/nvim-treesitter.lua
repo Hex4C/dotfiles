@@ -2,7 +2,20 @@ return {
 
   -- TODO:
   -- Rewrite treesitter to use the main branch instead of the master branch.
-
+  -- {
+  --   'nvim-treesitter/nvim-treesitter',
+  --   lazy = false,
+  --   branch = 'main',
+  --   build = ':TSUpdate',
+  --   config = function()
+  --     require('nvim-treesitter').install { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python' }
+  --
+  --     ---@diagnostic disable-next-line: missing-fields
+  --     require('nvim-treesitter.config').setup {
+  --       highlight = true,
+  --     }
+  --   end,
+  -- },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
