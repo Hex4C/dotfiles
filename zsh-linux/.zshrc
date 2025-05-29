@@ -179,7 +179,8 @@ bindkey "^F" fzf-cd-widget
 bindkey -r "^[c"
 
 # Make the Ctrl + f faster with fd instead of find
-export FZF_ALT_C_COMMAND="fd -H --type d"
+export FZF_ALT_C_COMMAND="fd --type d --hidden --exclude .git"
+
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
   --color=fg:#d0d0d0,fg+:#d0d0d0,bg:-1,bg+:#262626
