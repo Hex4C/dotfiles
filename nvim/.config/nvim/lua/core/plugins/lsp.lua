@@ -4,7 +4,7 @@ return {
     -- used for completion, annotations and signatures of Neovim apis
     'folke/lazydev.nvim',
     lazy = true,
-    event = 'BufRead',
+    event = 'BufReadPre',
     ft = 'lua',
     opts = {
       library = {
@@ -17,7 +17,7 @@ return {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     lazy = true,
-    event = 'BufRead',
+    event = 'BufReadPre',
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
