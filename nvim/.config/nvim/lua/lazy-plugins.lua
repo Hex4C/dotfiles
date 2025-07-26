@@ -63,7 +63,7 @@ require('lazy').setup({
   require 'core.plugins.autopairs',
   require 'core.plugins.neo-tree',
 
-  -- BUG: Import the debogger here later
+  -- TODO: Import the debogger here later
   -- require 'core.plugins.debug',
 
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
