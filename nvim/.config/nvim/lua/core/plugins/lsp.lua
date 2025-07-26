@@ -2,6 +2,9 @@ return {
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
+    -- BUG: This is currently causing a lot of spam due to buffer being updated.
+    -- Hopefully this will be fixed sooon but since I don't write much in the lua files
+    -- I'll leave it as is...
     'folke/lazydev.nvim',
     lazy = true,
     event = 'BufReadPre',
@@ -153,8 +156,10 @@ return {
               completion = {
                 callSnippet = 'Replace',
               },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = {
+                disable = { 'missing-fields' },
+                globals = { 'vim' }, -- Important: tell lua_ls to recognize the 'vim' global
+              },
             },
           },
         },
@@ -189,6 +194,9 @@ return {
         -- 'black', -- Used to format python code
         'markdownlint', -- Markdownformatter
       })
+
+      -- BUG: At the moment of writing this it doesn't entirely work when being lazy loaded.
+      -- Run :MasonToolsInstall instead
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       -- Setup mason-lspconfig with default settings and automatic installation disabled
