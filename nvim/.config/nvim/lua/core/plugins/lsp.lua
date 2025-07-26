@@ -158,7 +158,7 @@ return {
               },
               diagnostics = {
                 disable = { 'missing-fields' },
-                globals = { 'vim' }, -- Important: tell lua_ls to recognize the 'vim' global
+                globals = { 'vim' },
               },
             },
           },
