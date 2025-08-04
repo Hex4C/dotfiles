@@ -320,8 +320,8 @@ keybinding:
     nextItem: <down>
     prevItem-alt: k
     nextItem-alt: j
-    prevPage: ','
-    nextPage: .
+    prevPage: 'ö'
+    nextPage: ä
     scrollLeft: H
     scrollRight: L
     gotoTop: <
