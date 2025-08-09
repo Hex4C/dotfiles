@@ -134,6 +134,9 @@ eval "$(fzf --zsh)"
 bindkey "^F" fzf-cd-widget
 bindkey -r "^[c"
 
+# Batt (Mac battery management)
+alias bs="batt status"
+
 # Coloured cat (ccat)
 alias c="ccat"
 
