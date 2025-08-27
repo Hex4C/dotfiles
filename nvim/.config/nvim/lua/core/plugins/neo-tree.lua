@@ -18,10 +18,20 @@ return {
         -- 'open_default',
         -- "open_current",
         -- hijack_netrw_behavior = 'disabled',
+        filtered_items = {
+          hide_dotfiles = true,
+          hide_gitignored = true,
+          always_show = {
+            '.nuxt',
+          },
+        },
       },
       window = {
         position = 'float',
         width = 30,
+        mappings = {
+          ['w'] = 'open_drop',
+        },
       },
       open_on_startup = false,
     }
