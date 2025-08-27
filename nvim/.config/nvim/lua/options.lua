@@ -75,10 +75,13 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- Open help pages in vertical mode
-vim.api.nvim_create_autocmd({ 'filetype' }, {
-  pattern = 'help',
+vim.api.nvim_create_autocmd('BufWinEnter', {
+  group = vim.api.nvim_create_augroup('help_window_right', { clear = true }),
+  pattern = { '*.txt', 'manpager' },
   callback = function()
-    vim.cmd.wincmd 'L'
+    if vim.bo.filetype == 'help' or vim.bo.filetype == 'man' then
+      vim.cmd.wincmd 'L'
+    end
   end,
 })
 
