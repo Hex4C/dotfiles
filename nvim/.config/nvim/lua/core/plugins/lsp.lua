@@ -146,6 +146,15 @@ return {
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      local vue_language_server_path = vim.fn.stdpath 'data'
+        .. '/mason/packages/vue-language-server/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin'
+      local vue_plugin = {
+        name = '@vue/typescript-plugin',
+        location = vue_language_server_path,
+        languages = { 'vue' },
+        configNamespace = 'typescript',
+      }
+
       local servers = {
         clangd = {},
         gopls = {},
@@ -173,7 +182,18 @@ return {
         cssls = {},
         -- Maybe replace this typescript ls with the typescript-tools.nvim
         -- plugin if it gets slow, or if I want more tools.
-        vtsls = {},
+        vtsls = {
+          settings = {
+            vtsls = {
+              tsserver = {
+                globalPlugins = {
+                  vue_plugin,
+                },
+              },
+            },
+          },
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        },
         jsonls = {},
         vue_ls = {},
         emmet_language_server = {},
@@ -196,6 +216,7 @@ return {
         'stylua', -- Used to format Lua code
         -- 'black', -- Used to format python code
         'markdownlint', -- Markdownformatter
+        'prettier',
       })
 
       -- BUG: At the moment of writing this it doesn't entirely work when being lazy loaded.
