@@ -173,7 +173,7 @@ return {
         cssls = {},
         -- Maybe replace this typescript ls with the typescript-tools.nvim
         -- plugin if it gets slow, or if I want more tools.
-        ts_ls = {},
+        vtsls = {},
         jsonls = {},
         vue_ls = {},
         emmet_language_server = {},
