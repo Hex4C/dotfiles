@@ -74,5 +74,13 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Open help pages in vertical mode
+vim.api.nvim_create_autocmd({ 'filetype' }, {
+  pattern = 'help',
+  callback = function()
+    vim.cmd.wincmd 'L'
+  end,
+})
+
 -- [[ Diagnostic config ]]
 require 'diagnostic-config'
