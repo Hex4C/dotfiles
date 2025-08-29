@@ -214,7 +214,7 @@ return {
       -- local ensure_installed = {}
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
-        -- 'black', -- Used to format python code
+        'black', -- Used to format python code
         'markdownlint', -- Markdownformatter
         'prettier',
       })
