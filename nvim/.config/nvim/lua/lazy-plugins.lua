@@ -53,6 +53,8 @@ require('lazy').setup({
 
   require 'core.plugins.todo-comments',
 
+  require 'core.plugins.lualine',
+
   require 'core.plugins.mini',
 
   require 'core.plugins.nvim-treesitter',
