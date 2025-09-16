@@ -50,8 +50,8 @@ palette = 15=#ffffff
 
 #font-thicken = true
 #font-thicken-strength = 100
-theme = catppuccin-mocha
-#theme = catppuccin-macchiato
+theme = Catppuccin Mocha
+#theme = Catppuccin Macchiato
 #background = 000000
 
 macos-option-as-alt = right
