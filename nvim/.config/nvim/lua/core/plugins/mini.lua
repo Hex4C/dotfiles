@@ -18,7 +18,7 @@ return {
     require('mini.surround').setup()
 
     -- Add icons
-    require('mini.icons').setup()
+    -- require('mini.icons').setup()
 
     -- Add comments fix (mainly for rust)
     -- // Would become //test in rust
