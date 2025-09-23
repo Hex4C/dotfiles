@@ -47,7 +47,6 @@ require('lazy').setup({
   require 'core.plugins.conform',
 
   require 'core.plugins.blink',
-  -- require 'core.plugins.nvim-cmp',
 
   require 'core.plugins.themes',
 
