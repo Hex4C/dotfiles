@@ -17,7 +17,7 @@ return {
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
   },
-  event = 'VeryLazy',
+  cmd = { 'DapClearBreakpoints', 'DapNew', 'DapInstall', 'DapUninstall', 'DapToggleBreakpoint', 'DapShowLog' },
   keys = function(_, keys)
     local dap = require 'dap'
     local dapui = require 'dapui'
