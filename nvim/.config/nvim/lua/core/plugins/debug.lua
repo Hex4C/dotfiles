@@ -11,10 +11,13 @@ return {
   event = 'VeryLazy',
   dependencies = {
     'rcarriga/nvim-dap-ui',
-    -- 'theHamsta/nvim-dap-virtual-text',
+    'theHamsta/nvim-dap-virtual-text',
     'nvim-neotest/nvim-nio',
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
+
+    -- Own debuggers
+    'mfussenegger/nvim-dap-python',
   },
   -- cmd = { 'DapClearBreakpoints', 'DapNew', 'DapInstall', 'DapUninstall', 'DapToggleBreakpoint', 'DapShowLog' },
   config = function()
@@ -31,6 +34,8 @@ return {
     vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
     vim.keymap.set('n', '<space>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
     vim.keymap.set('n', '<space>gb', dap.run_to_cursor, { desc = 'Debug: Run to cursor' })
+
+    require('nvim-dap-virtual-text').setup()
 
     require('mason-nvim-dap').setup {
       automatic_installation = true,
@@ -74,5 +79,9 @@ return {
     dap.listeners.before.event_exited.dapui_config = function()
       dapui.close()
     end
+
+    -- Own custom deboggers...
+    -- Need to be added as dependencies earlier in the file...
+    -- require('dap-python').setup 'python3'
   end,
 }
