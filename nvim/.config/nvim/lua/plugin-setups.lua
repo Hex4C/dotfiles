@@ -34,7 +34,17 @@ vim.g.rustaceanvim = {
     },
   },
   -- DAP configuration (if needed)
-  -- dap = {},
+  --
+  dap = {
+    adapter = function()
+      local codelldb_pkg = vim.fn.expand '$MASON/packages/codelldb'
+      local extension_path = codelldb_pkg .. '/extension/'
+      local codelldb_path = extension_path .. 'adapter/codelldb'
+      local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
+      local cfg = require 'rustaceanvim.config'
+      return cfg.get_codelldb_adapter(codelldb_path, liblldb_path)
+    end,
+  },
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`

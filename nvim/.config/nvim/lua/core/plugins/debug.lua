@@ -17,7 +17,7 @@ return {
     'jay-babu/mason-nvim-dap.nvim',
 
     -- Own debuggers
-    'mfussenegger/nvim-dap-python',
+    -- 'mfussenegger/nvim-dap-python',
   },
   -- cmd = { 'DapClearBreakpoints', 'DapNew', 'DapInstall', 'DapUninstall', 'DapToggleBreakpoint', 'DapShowLog' },
   config = function()
