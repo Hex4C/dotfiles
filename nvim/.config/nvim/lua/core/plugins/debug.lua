@@ -43,6 +43,7 @@ return {
       ensure_installed = {
         'codelldb',
         'debugpy',
+        'Delve',
       },
       handlers = {},
     }
