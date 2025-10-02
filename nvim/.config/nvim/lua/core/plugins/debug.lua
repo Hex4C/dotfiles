@@ -35,6 +35,7 @@ return {
     vim.keymap.set('n', '<space>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
     vim.keymap.set('n', '<space>gb', dap.run_to_cursor, { desc = 'Debug: Run to cursor' })
 
+    ---@diagnostic disable-next-line: missing-parameter
     require('nvim-dap-virtual-text').setup()
 
     require('mason-nvim-dap').setup {
