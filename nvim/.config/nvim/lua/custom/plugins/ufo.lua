@@ -14,6 +14,8 @@ return {
     local fcs = vim.opt.fillchars:get()
 
     -- Stolen from Akinsho
+    -- Makes the folds look prettier :), trust me, you don't want the default setup
+    -- This is what needs the statuscol.nvim
     local function get_fold(lnum)
       if vim.fn.foldlevel(lnum) <= vim.fn.foldlevel(lnum - 1) then
         return ' '
