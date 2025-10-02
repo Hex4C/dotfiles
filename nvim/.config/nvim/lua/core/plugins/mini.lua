@@ -36,10 +36,10 @@ return {
         up = '<S-k>',
 
         -- Sove current line in Normal mode
-        line_left = '<S-h>',
-        line_right = '<S-l>',
-        line_down = '<S-j>',
-        line_up = '<S-k>',
+        -- line_left = '<S-h>',
+        -- line_right = '<S-l>',
+        -- line_down = '<S-j>',
+        -- line_up = '<S-k>',
       },
 
       -- Options which control moving behavior
