@@ -14,6 +14,7 @@ return {
   config = function()
     require('neo-tree').setup {
       close_if_last_window = true,
+      log_level = 'info',
       filesystem = {
         -- 'open_default',
         -- "open_current",
