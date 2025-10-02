@@ -18,6 +18,37 @@ return {
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require('mini.surround').setup()
 
+    require('mini.align').setup {
+      modifiers = {
+        -- Use 'T' modifier to remove both whitespace and indent
+        T = function(steps, _)
+          table.insert(steps.pre_justify, require('mini.align').gen_step.trim('both', 'remove'))
+        end,
+      },
+    }
+
+    require('mini.move').setup {
+      mappings = {
+        -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+        left = '<S-h>',
+        right = '<S-l>',
+        down = '<S-j>',
+        up = '<S-k>',
+
+        -- Sove current line in Normal mode
+        line_left = '<S-h>',
+        line_right = '<S-l>',
+        line_down = '<S-j>',
+        line_up = '<S-k>',
+      },
+
+      -- Options which control moving behavior
+      options = {
+        -- Automatically reindent selection during linewise vertical move
+        reindent_linewise = true,
+      },
+    }
+
     -- Add icons
     -- require('mini.icons').setup()
 
