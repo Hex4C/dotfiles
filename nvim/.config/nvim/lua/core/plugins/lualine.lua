@@ -9,6 +9,7 @@ return {
       theme = 'catppuccin-mocha',
       disabled_filetypes = {
         'neo-tree',
+        'alpha',
       },
     },
     sections = {

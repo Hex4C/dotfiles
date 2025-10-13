@@ -14,8 +14,7 @@ require('lazy').setup({
   -- import = 'core.plugins',
   require 'core.plugins.guess-indent',
 
-  require 'core.plugins.gitsigns',
-  -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
+  require 'core.plugins.gitsigns', -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
   -- lazy loading plugins that don't need to be loaded immediately at startup.
@@ -73,6 +72,10 @@ require('lazy').setup({
   --
   { import = 'custom.plugins' },
 }, {
+  rocks = {
+    enabled = true,
+    hererocks = true,
+  },
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
