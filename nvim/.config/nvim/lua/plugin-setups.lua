@@ -49,3 +49,6 @@ vim.g.rustaceanvim = {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
+-- Python setup things
+vim.g.python3_host_prog = vim.fn.expand '~/.config/nvim/.venv/bin/python3'
