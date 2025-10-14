@@ -93,6 +93,7 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # Brew path
 export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
 
 export PATH="/Applications/IntelliJ IDEA CE.app/Contents/plugins/maven/lib/maven3/bin:$PATH"
 
