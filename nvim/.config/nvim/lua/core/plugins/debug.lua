@@ -32,8 +32,8 @@ return {
     vim.keymap.set('n', '<F6>', dap.terminate, { desc = 'Debug: Terminate' })
 
     vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
-    vim.keymap.set('n', '<space>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<space>gb', dap.run_to_cursor, { desc = 'Debug: Run to cursor' })
+    vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
+    vim.keymap.set('n', '<leader>rb', dap.run_to_cursor, { desc = 'Debug: Run to cursor' })
 
     ---@diagnostic disable-next-line: missing-parameter
     require('nvim-dap-virtual-text').setup()
