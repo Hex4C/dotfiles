@@ -73,7 +73,7 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 }, {
   rocks = {
-    enabled = true,
+    enabled = false,
     hererocks = true,
   },
   ui = {
