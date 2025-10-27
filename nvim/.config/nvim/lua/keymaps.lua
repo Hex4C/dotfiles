@@ -75,7 +75,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Yoinked from HermanKassler to change cd
-vim.keymap.set('n', '<leader>cd', '<cmd>cd %:p:h<CR><cmd>pwd<cr>', { desc = '[C][D] to directory of open file' })
+-- vim.keymap.set('n', '<leader>cd', '<cmd>cd %:p:h<CR><cmd>pwd<cr>', { desc = '[C][D] to directory of open file' })
+vim.api.nvim_create_user_command('Ccwd', function()
+  vim.cmd 'cd %:p:h'
+  vim.cmd 'pwd'
+end, {})
 
 -- Remove default vim.lsp kebinds which are already implemented with telescope keybinds.
 vim.keymap.del('n', 'grn')
