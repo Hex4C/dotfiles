@@ -30,7 +30,7 @@ return {
       -- Conform can also run multiple formatters sequentially
       python = { 'black' },
       go = { 'gofumpt' },
-      zig = { 'zigfmt' },
+      -- zig = { 'zigfmt' },
       -- NOTE: Rustfmt is handeled by rustaceanvim (lsp fallback)
       --
       -- rust = { 'rustfmt ' },
