@@ -54,13 +54,13 @@ return {
       map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'git [R]eset buffer' })
       map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'git [p]review hunk' })
       map('n', '<leader>hb', gitsigns.blame_line, { desc = 'git [b]lame line' })
-      map('n', '<leader>ht', gitsigns.blame, { desc = 'git [b]lame ' })
       map('n', '<leader>hd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
       map('n', '<leader>hD', function()
         gitsigns.diffthis '@'
       end, { desc = 'git [D]iff against last commit' })
       -- Toggles
-      map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
+      map('n', '<leader>tb', gitsigns.blame, { desc = 'git [b]lame ' })
+      map('n', '<leader>tl', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
       map('n', '<leader>td', gitsigns.preview_hunk_inline, { desc = '[T]oggle git [D]iff inline' })
     end,
 
