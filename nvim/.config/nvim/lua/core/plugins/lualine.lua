@@ -17,15 +17,25 @@ return {
       lualine_a = { 'mode' },
       lualine_b = { 'branch', 'diff', 'diagnostics' },
       lualine_c = {
-        'filename',
-        function()
-          local reg = vim.fn.reg_recording()
-          -- If a macro is being recorded, show "Recording @<register>"
-          if reg ~= '' then
-            return 'REC @' .. reg
-          end
-          return ''
-        end,
+        {
+          'filename',
+          path = 1, -- 0 = filename, 1 = relative path, 2 = absolute path
+          shorting_target = 20, -- shorten if long
+          symbols = {
+            modified = '●',
+            readonly = '',
+          },
+        },
+        {
+          function()
+            local reg = vim.fn.reg_recording()
+            if reg ~= '' then
+              return ' REC @' .. reg -- adds a nice recording icon
+            end
+            return ''
+          end,
+          color = { fg = '#f38ba8', gui = 'bold' }, -- optional styling
+        },
       },
       lualine_x = { 'encoding', 'fileformat', 'filetype' },
       lualine_y = { 'progress' },
