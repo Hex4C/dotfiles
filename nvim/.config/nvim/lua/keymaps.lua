@@ -10,7 +10,7 @@ vim.keymap.set('n', 'ä', '{')
 vim.keymap.set('n', 'ö', '}')
 
 -- Easier to type : when not on a good keyboard
-vim.keymap.set('n', '.', ':')
+-- vim.keymap.set('n', '.', ':')
 
 vim.keymap.set('i', '<C-c>', '<Esc>')
 vim.keymap.set('n', '<C-c>', '<Esc>')
