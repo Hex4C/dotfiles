@@ -6,8 +6,8 @@
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Add better navigation for nordic keyboard layout
-vim.keymap.set('n', 'ä', '{')
-vim.keymap.set('n', 'ö', '}')
+-- vim.keymap.set('n', 'ä', '<C-u>')
+-- vim.keymap.set('n', 'ö', '<C-d>')
 
 -- Easier to type : when not on a good keyboard
 -- vim.keymap.set('n', '.', ':')
