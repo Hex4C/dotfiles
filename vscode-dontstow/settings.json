@@ -1,0 +1,124 @@
+{
+  "window.zoomLevel": 1,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 1,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "catppuccin.accentColor": "sapphire",
+  "editor.fontSize": 14,
+  "editor.minimap.enabled": false,
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools",
+    "editor.suggest.insertMode": "insert"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4 }",
+  "editor.minimap.autohide": "mouseover",
+  "explorer.compactFolders": false,
+  "workbench.startupEditor": "none",
+  "security.workspace.trust.untrustedFiles": "open",
+  "files.autoSaveDelay": 0,
+  "editor.cursorBlinking": "solid",
+  "remote.SSH.remotePlatform": {
+    "student-shell.sys.kth.se": "linux"
+  },
+  "workbench.activityBar.location": "top",
+  "files.autoSave": "onWindowChange",
+  "editor.lineNumbers": "relative",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "vim.leader": "<Space>",
+  "vim.hlsearch": true,
+  "vim.highlightedyank.enable": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // NAVIGATION
+    // switch b/w buffers
+    // { "before": ["<S-h>"], "commands": [":bprevious"] },
+    // { "before": ["<S-l>"], "commands": [":bnext"] },
+
+    // splits
+    // { "before": ["leader", "v"], "commands": [":vsplit"] },
+    // { "before": ["leader", "s"], "commands": [":split"] },
+
+    // panes
+    {
+      "before": ["leader", "h"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["leader", "j"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": ["leader", "k"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["leader", "l"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+    // NICE TO HAVE
+    { "before": ["leader", "w"], "commands": [":w!"] },
+    {
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["<leader>", "c", "a"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["leader", "s", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    { "before": ["leader", "f"], "commands": ["editor.action.formatDocument"] },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    // Stay in visual mode while indenting
+    { "before": ["H"], "commands": ["editor.action.outdentLines"] },
+    { "before": ["L"], "commands": ["editor.action.indentLines"] },
+    // Move selected lines while staying in visual mode
+    { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
+    { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
+    // toggle comment selection
+    { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
+  ],
+  "vim.useSystemClipboard": true,
+  "errorLens.scrollbarHackEnabled": true,
+  "errorLens.messageBackgroundMode": "message",
+  "breadcrumbs.enabled": false,
+  "workbench.editor.limit.perEditorGroup": true,
+  "workbench.editor.showTabs": "single",
+  "git.openRepositoryInParentFolders": "always",
+  "redhat.telemetry.enabled": false,
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "github.copilot.renameSuggestions.triggerAutomatically": false,
+  "github.copilot.editor.enableCodeActions": false,
+  "github.copilot.chat.copilotDebugCommand.enabled": false,
+  "github.copilot.chat.edits.suggestRelatedFilesForTests": false,
+  "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": false,
+  "github.copilot.editor.enableAutoCompletions": false,
+  "github.copilot.chat.fixTestFailure.enabled": false,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "terminal.integrated.inheritEnv": false,
+  "extensions.ignoreRecommendations": true
+}
