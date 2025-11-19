@@ -14,11 +14,11 @@ cursor-style-blink = false
 shell-integration-features = no-cursor
 
 # Toggle full screen with fn + f on mac
-window-width = 165
-window-height = 44
+window-width = 170
+window-height = 46
 window-save-state = never
-window-position-x = 50
-window-position-y = 40
+window-position-x = 33
+window-position-y = 27
 
 # May reduce performance
 #background-opacity = 0.9
