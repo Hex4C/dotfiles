@@ -12,6 +12,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Easier to type : when not on a good keyboard
 -- vim.keymap.set('n', '.', ':')
 
+-- This only rempas ctrl + c to esc and not the other way around
 vim.keymap.set('i', '<C-c>', '<Esc>')
 vim.keymap.set('n', '<C-c>', '<Esc>')
 
