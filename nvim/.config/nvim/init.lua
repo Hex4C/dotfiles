@@ -18,7 +18,7 @@
 =====================================================================
 
 -- Folke Highlights...
--- PERF: Pref 
+-- PERF: Perf 
 -- HACK: Lifehack :P
 -- TODO: Something I should do...
 -- NOTE: Yeah, note to be added
