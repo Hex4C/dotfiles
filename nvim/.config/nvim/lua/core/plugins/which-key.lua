@@ -53,6 +53,7 @@ return {
       { '<leader>s', group = '[S]earch' },
       { '<leader>w', group = '[W]orkspace' },
       { '<leader>t', group = '[T]oggle' },
+      { '<leader>n', group = '[N]oice' },
       { '<leader>h', group = 'git [H]unk', mode = { 'n', 'v' } },
     },
   },

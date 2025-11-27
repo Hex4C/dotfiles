@@ -2,6 +2,15 @@ return {
   'folke/flash.nvim',
   event = 'VeryLazy',
   opts = {
+    search = {
+      exclude = {
+        'qf',
+        'quickfix',
+        'blink-cmp-menu',
+        'blink-cmp-documentation',
+        'blink-cmp-signature',
+      },
+    },
     modes = {
       char = {
         enabled = false,

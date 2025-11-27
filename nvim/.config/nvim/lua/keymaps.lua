@@ -27,6 +27,15 @@ vim.keymap.set('v', 'P', 'p')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'qf',
+  callback = function()
+    vim.keymap.set('n', '<CR>', '<CR>', { buffer = true })
+    vim.keymap.set('n', 'k', '<Up><CR><C-w>p', { buffer = true, remap = false, desc = 'Navigate up quickfix' })
+    vim.keymap.set('n', 'j', '<Down><CR><C-w>p', { buffer = true, remap = false, desc = 'Navigate down quickfix' })
+  end,
+})
+
 -- Behöver inte riktigt det här, overkill
 -- -- Enable diagnostics automatically for all buffers
 -- vim.api.nvim_create_autocmd('BufEnter', {

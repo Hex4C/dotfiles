@@ -12,6 +12,17 @@ return {
     --   If not available, we use `mini` as the fallback
     'rcarriga/nvim-notify',
   },
+  keys = {
+    {
+      '<leader>nh',
+      '<cmd>Telescope noice<cr>',
+      mode = 'n',
+      desc = '[N]oice History',
+      -- IMPORTANT: The keymap must NOT be buffer-local (remove buffer = true)
+      -- The keymap is global and will lazy-load Noice if you didn't have `event = 'VimEnter'`
+      -- In this case, it will simply be registered early.
+    },
+  },
   config = function()
     -- NOTE: Potentially limit the size of notify view.
 
