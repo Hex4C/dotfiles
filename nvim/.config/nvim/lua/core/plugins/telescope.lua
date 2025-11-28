@@ -51,14 +51,17 @@ return { -- Fuzzy Finder (files, lsp, etc)
       --  All the info you're looking for is in `:help telescope.setup()`
       --
       defaults = {
+        mappings = {
+          i = {
+            ['<esc>'] = 'close',
+            -- ['<c-enter>'] = 'to_fuzzy_refine',
+          },
+        },
         sorting_strategy = 'ascending',
         layout_config = {
           prompt_position = 'top',
         },
         -- file_ignore_patterns = {},
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
       },
       -- pickers = {
       --   find_files = {
