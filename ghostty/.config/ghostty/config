@@ -1,10 +1,10 @@
 auto-update = off
 
-font-family = "MesloLGS NF Regular"
-font-family-bold = "MesloLGS NF Bold"
-font-family-italic = "MesloLGS NF Italic"
-font-family-bold = "MesloLGS NF Bold"
-font-family-bold-italic = "MesloLGS NF Bold Italic"
+font-family = "JetBrainsMonoNL NF Regular"
+font-family-bold = "JetBrainsMonoNL NF Bold"
+font-family-italic = "JetBrainsMonoNL NF Italic"
+font-family-bold = "JetBrainsMonoNL NF Bold"
+font-family-bold-italic = "JetBrainsMonoNL NF Bold Italic"
 font-size = 14
 font-feature = -calt, -liga, -dlig
 
