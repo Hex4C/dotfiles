@@ -93,6 +93,7 @@ end, {})
 
 -- Remove default vim.lsp kebinds which are already implemented with telescope keybinds.
 vim.keymap.del('n', 'grn')
+vim.keymap.del('n', 'grt')
 vim.keymap.del('n', 'grr')
 vim.keymap.del('n', 'gri')
 vim.keymap.del('n', 'gra')
