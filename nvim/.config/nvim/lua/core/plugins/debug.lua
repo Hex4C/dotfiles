@@ -85,5 +85,26 @@ return {
     -- Own custom deboggers...
     -- Need to be added as dependencies earlier in the file...
     -- require('dap-python').setup 'python3'
+
+    dap.configurations.python = {
+      {
+        type = 'python',
+        request = 'launch',
+        program = '${file}',
+        console = 'integratedTerminal',
+        name = 'Launch file (no args)',
+      },
+      {
+        type = 'python',
+        request = 'launch',
+        program = '${file}',
+        console = 'integratedTerminal',
+        name = 'Launch file with args',
+        args = function()
+          local input = vim.fn.input 'Python args: '
+          return vim.split(input, ' ', { trimempty = true })
+        end,
+      },
+    }
   end,
 }
