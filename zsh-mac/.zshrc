@@ -95,7 +95,7 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=/opt/homebrew/sbin:$PATH
 
-export PATH="/Applications/IntelliJ IDEA CE.app/Contents/plugins/maven/lib/maven3/bin:$PATH"
+export PATH="/Applications/IntelliJ IDEA.app/Contents/plugins/maven/lib/maven3/bin:$PATH"
 
 # Git commands
 alias gs="git status"
