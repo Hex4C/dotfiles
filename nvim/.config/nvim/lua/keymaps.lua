@@ -27,6 +27,19 @@ vim.keymap.set('v', 'P', 'p')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+-- Diagnostic toggle virtual lines feedback
+vim.keymap.set('n', '<leader>tv', function()
+  local config = vim.diagnostic.config()
+  -- Check the current state and invert it
+  ---@diagnostic disable-next-line: need-check-nil
+  local new_state = not config.virtual_lines
+
+  vim.diagnostic.config { virtual_lines = new_state, virtual_text = not new_state }
+
+  -- Optional: Print a status message
+  print('Virtual lines: ' .. (new_state and 'On' or 'Off'))
+end, { desc = '[T]oggle [V]irtual Lines' })
+
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'qf',
   callback = function()
