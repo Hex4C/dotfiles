@@ -120,7 +120,7 @@ alias c="ccat"
 alias vim="nvim"
 
 
-alias conda-init="source /opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+alias conda-init="source /opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh && conda activate base"
 #
 # # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
