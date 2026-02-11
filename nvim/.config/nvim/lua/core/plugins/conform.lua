@@ -28,7 +28,7 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
-      python = { 'black' },
+      python = { 'ruff_format', 'ruff_organize_imports' },
       go = { 'gofumpt' },
       -- zig = { 'zigfmt' },
       -- NOTE: Rustfmt is handeled by rustaceanvim (lsp fallback)

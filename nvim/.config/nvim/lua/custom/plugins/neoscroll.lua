@@ -2,6 +2,7 @@ return {
   'karb94/neoscroll.nvim',
   opts = {
     duration_multiplier = 1.0,
+    performance_mode = true,
   },
   event = 'VeryLazy',
   config = function()
