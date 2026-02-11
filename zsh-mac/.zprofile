@@ -1,4 +1,5 @@
 eval $(/opt/homebrew/bin/brew shellenv)
+eval $(uv generate-shell-completion zsh)
 
 # Paths
 # IntelliJ Maven
