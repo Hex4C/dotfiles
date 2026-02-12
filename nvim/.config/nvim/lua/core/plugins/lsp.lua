@@ -158,7 +158,59 @@ return {
       local servers = {
         clangd = {},
         gopls = {},
-        pyright = {},
+        ruff = {
+          init_options = {
+            settings = {
+              lint = {
+                select = { 'E', 'F', 'B', 'UP', 'W', 'N' },
+                ignore = { 'F841' },
+              },
+            },
+          },
+        },
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              disableOrganizeImports = true, -- Let Ruff handle import sorting
+              analysis = {
+                -- Severity overrides: disable everything Ruff already covers
+                -- to avoid duplicate diagnostics
+                autoFormatStrings = false,
+                typeCheckingMode = 'basic',
+                diagnosticSeverityOverrides = {
+                  -- reportAny = false,
+                  -- Unused variables / imports (Ruff: F841, F401)
+                  reportUnusedVariable = 'hint',
+                  reportUnusedImport = false,
+                  -- Unused function params / self (Ruff: ARG)
+                  reportUnusedParameter = false,
+                  -- Unused classes, functions, expressions (Ruff: B018, F811)
+                  reportUnusedClass = false,
+                  reportUnusedFunction = false,
+                  reportUnusedExpression = false,
+                  reportUnusedExceptHandler = false,
+                  -- Star imports & wildcard (Ruff: F403, F405)
+                  reportWildcardImportFromLibrary = false,
+                  -- Duplicate imports (Ruff: E501, F811)
+                  reportDuplicateImport = false,
+                  -- Undefined variables / names (Ruff: F821)
+                  reportUndefinedVariable = false,
+                  -- Shadowing (Ruff: A001, A002, A003)
+                  reportShadowedImports = false,
+                  -- Type-ignore comments — let Ruff manage these (PGH003)
+                  enableTypeIgnoreComments = false,
+                  -- Missing return type / param type — Ruff has ANN rules
+                  reportMissingParameterType = false,
+                  reportMissingTypeArgument = false,
+                  -- Assert usage (Ruff: S101, B011)
+                  reportAssertAlwaysTrue = false,
+                  -- Deprecated usage (Ruff: UP, PYI)
+                  reportDeprecated = false,
+                },
+              },
+            },
+          },
+        },
         lua_ls = {
           settings = {
             Lua = {
