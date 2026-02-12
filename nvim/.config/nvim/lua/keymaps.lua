@@ -27,6 +27,8 @@ vim.keymap.set('v', 'P', 'p')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+vim.keymap.set('n', 'Q', vim.diagnostic.open_float, { desc = 'Open diagnostic float' })
+
 -- Diagnostic toggle virtual lines feedback
 vim.keymap.set('n', '<leader>tv', function()
   local config = vim.diagnostic.config()
