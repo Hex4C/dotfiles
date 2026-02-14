@@ -1,7 +1,7 @@
 {
   "window.zoomLevel": 1,
   "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.value": 1,
+  "workbench.editor.limit.value": 5,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Catppuccin Mocha",
   "catppuccin.accentColor": "sapphire",
@@ -13,6 +13,14 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.defaultColorDecorators": "never",
+    "gitlens.codeLens.symbolScopes": ["!Module"],
+    "editor.formatOnSave": true,
+    "editor.wordBasedSuggestions": "off"
   },
   "editor.formatOnSave": true,
   "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4 }",
@@ -99,26 +107,15 @@
   "errorLens.messageBackgroundMode": "message",
   "breadcrumbs.enabled": false,
   "workbench.editor.limit.perEditorGroup": true,
-  "workbench.editor.showTabs": "single",
   "git.openRepositoryInParentFolders": "always",
-  "redhat.telemetry.enabled": false,
   "[java]": {
     "editor.defaultFormatter": "redhat.java"
   },
-  "github.copilot.renameSuggestions.triggerAutomatically": false,
-  "github.copilot.editor.enableCodeActions": false,
-  "github.copilot.chat.copilotDebugCommand.enabled": false,
-  "github.copilot.chat.edits.suggestRelatedFilesForTests": false,
-  "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": false,
-  "github.copilot.editor.enableAutoCompletions": false,
-  "github.copilot.chat.fixTestFailure.enabled": false,
-  "github.copilot.enable": {
-    "*": false,
-    "plaintext": false,
-    "markdown": false,
-    "scminput": false
-  },
-  "github.copilot.nextEditSuggestions.enabled": true,
   "terminal.integrated.inheritEnv": false,
-  "extensions.ignoreRecommendations": true
+  "extensions.ignoreRecommendations": true,
+  "telemetry.telemetryLevel": "off",
+  "workbench.enableExperiments": false,
+  "update.showReleaseNotes": false,
+  "liveshare.diagnosticLogging": false,
+  "liveshare.diagnosticLoggingLevel": "Off"
 }
