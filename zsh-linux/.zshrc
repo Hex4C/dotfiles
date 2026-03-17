@@ -41,30 +41,9 @@ alias vf="nvim ."
 alias tl="tree -L 2"
 alias tla="tree -aL 2"
 
-# Go
-# Check if Go binary path is already in $PATH
-if [[ ":$PATH:" != *":/usr/local/go/bin:"* ]]; then
-    export PATH=$PATH:/usr/local/go/bin
-fi
-
-
-# Zig
-# if [[ ":$PATH:" != *":/usr/local/zig:"* ]]; then
-#     export PATH=$PATH:/usr/local/zig
-# fi
-
-# Add stuff in local/bin to path, mainly fd
-export PATH=$HOME/.local/bin/:$PATH
-
-# Rust
-source "$HOME/.cargo/env"
-
 # Java
 # alias javac="javac.exe"
 # alias java="java.exe"
-
-# On launch commands
-# clear
 
 # fzf zsh keybindings
 source <(fzf --zsh)
@@ -86,11 +65,3 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
   --border="rounded" --border-label="" --preview-window="border-rounded" --prompt="> "
   --marker=">" --pointer="◆" --separator="─" --scrollbar="│"'
 
-
-# pnpm
-export PNPM_HOME="/home/jesper/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
