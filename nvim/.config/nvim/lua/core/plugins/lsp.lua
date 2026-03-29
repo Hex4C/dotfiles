@@ -163,7 +163,7 @@ return {
             settings = {
               lint = {
                 select = { 'E', 'F', 'B', 'UP', 'W', 'N' },
-                ignore = { 'F841' },
+                ignore = { 'F841', 'N806', 'N803' },
               },
             },
           },
