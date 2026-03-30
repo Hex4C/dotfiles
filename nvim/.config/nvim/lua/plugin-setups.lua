@@ -22,9 +22,7 @@ vim.g.rustaceanvim = {
         vim.cmd.RustLsp 'codeAction' -- Uses rust-analyzer's grouping
       end, { silent = true, buffer = bufnr, desc = '[C]ode [A]ction (RUST)' })
 
-      vim.keymap.set('n', 'K', function()
-        vim.cmd.RustLsp { 'hover', 'actions' }
-      end, opts)
+      vim.keymap.set('n', 'K', function() vim.cmd.RustLsp { 'hover', 'actions' } end, opts)
     end,
     default_settings = {
       ['rust-analyzer'] = {

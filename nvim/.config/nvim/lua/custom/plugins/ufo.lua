@@ -17,15 +17,11 @@ return {
     -- Makes the folds look prettier :), trust me, you don't want the default setup
     -- This is what needs the statuscol.nvim
     local function get_fold(lnum)
-      if vim.fn.foldlevel(lnum) <= vim.fn.foldlevel(lnum - 1) then
-        return ' '
-      end
+      if vim.fn.foldlevel(lnum) <= vim.fn.foldlevel(lnum - 1) then return ' ' end
       local fold_sym = vim.fn.foldclosed(lnum) == -1 and fcs.foldopen or fcs.foldclose
       return fold_sym
     end
-    _G.get_statuscol = function()
-      return '%s%l' .. get_fold(vim.v.lnum) .. ' '
-    end
+    _G.get_statuscol = function() return '%s%l' .. get_fold(vim.v.lnum) .. ' ' end
 
     vim.o.statuscolumn = '%!v:lua.get_statuscol()'
     -- local builtin = require 'statuscol.builtin'
@@ -45,9 +41,7 @@ return {
     vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 
     require('ufo').setup {
-      provider_selector = function(_, _, _)
-        return { 'treesitter', 'indent' }
-      end,
+      provider_selector = function(_, _, _) return { 'treesitter', 'indent' } end,
     }
   end,
 }

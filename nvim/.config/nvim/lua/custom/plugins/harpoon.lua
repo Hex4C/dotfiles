@@ -15,13 +15,9 @@ return {
     }
 
     -- vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-    vim.keymap.set('n', '<leader>a', function()
-      harpoon:list():add()
-    end, { desc = '[a]dd to Harpoon' })
+    vim.keymap.set('n', '<leader>a', function() harpoon:list():add() end, { desc = '[a]dd to Harpoon' })
 
-    vim.keymap.set('n', '<leader>g', function()
-      harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts)
-    end, { desc = '[G] Harpoon quick menu' })
+    vim.keymap.set('n', '<leader>g', function() harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts) end, { desc = '[G] Harpoon quick menu' })
 
     -- NOTE: telescope window but Harpoon window is more minimalistic
     --
@@ -48,25 +44,13 @@ return {
     --   toggle_telescope(harpoon:list())
     -- end, { desc = 'Open harpoon window' })
 
-    vim.keymap.set('n', '<m-a>', function()
-      harpoon:list():select(1)
-    end)
-    vim.keymap.set('n', '<m-s>', function()
-      harpoon:list():select(2)
-    end)
-    vim.keymap.set('n', '<m-d>', function()
-      harpoon:list():select(3)
-    end)
-    vim.keymap.set('n', '<m-f>', function()
-      harpoon:list():select(4)
-    end)
+    vim.keymap.set('n', '<m-a>', function() harpoon:list():select(1) end)
+    vim.keymap.set('n', '<m-s>', function() harpoon:list():select(2) end)
+    vim.keymap.set('n', '<m-d>', function() harpoon:list():select(3) end)
+    vim.keymap.set('n', '<m-f>', function() harpoon:list():select(4) end)
 
     -- Toggle previous & next buffers stored within Harpoon list
-    vim.keymap.set('n', '<m-S-P>', function()
-      harpoon:list():prev()
-    end)
-    vim.keymap.set('n', '<m-S-N>', function()
-      harpoon:list():next()
-    end)
+    vim.keymap.set('n', '<m-S-P>', function() harpoon:list():prev() end)
+    vim.keymap.set('n', '<m-S-N>', function() harpoon:list():next() end)
   end,
 }

@@ -26,9 +26,7 @@ vim.opt.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
+vim.schedule(function() vim.opt.clipboard = 'unnamedplus' end)
 
 -- Disable vim basic intro messages
 vim.opt.shortmess:append 'I'
@@ -79,9 +77,7 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
   group = vim.api.nvim_create_augroup('help_window_right', { clear = true }),
   pattern = { '*.txt', 'manpager' },
   callback = function()
-    if vim.bo.filetype == 'help' or vim.bo.filetype == 'man' then
-      vim.cmd.wincmd 'L'
-    end
+    if vim.bo.filetype == 'help' or vim.bo.filetype == 'man' then vim.cmd.wincmd 'L' end
   end,
 })
 

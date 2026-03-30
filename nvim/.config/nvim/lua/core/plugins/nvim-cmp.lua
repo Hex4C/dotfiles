@@ -9,9 +9,7 @@ return { -- Autocompletion
         -- Build Step is needed for regex support in snippets.
         -- This step is not supported in many windows environments.
         -- Remove the below condition to re-enable on windows.
-        if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-          return
-        end
+        if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then return end
         return 'make install_jsregexp'
       end)(),
       dependencies = {
@@ -20,9 +18,7 @@ return { -- Autocompletion
         --    https://github.com/rafamadriz/friendly-snippets
         {
           'rafamadriz/friendly-snippets',
-          config = function()
-            require('luasnip.loaders.from_vscode').lazy_load()
-          end,
+          config = function() require('luasnip.loaders.from_vscode').lazy_load() end,
         },
       },
     },
@@ -81,9 +77,7 @@ return { -- Autocompletion
 
     cmp.setup {
       snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
+        expand = function(args) luasnip.lsp_expand(args.body) end,
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
 
@@ -149,14 +143,10 @@ return { -- Autocompletion
         -- <c-l> will move you to the right of each of the expansion locations.
         -- <c-h> is similar, except moving you backwards.
         ['<C-l>'] = cmp.mapping(function()
-          if luasnip.expand_or_locally_jumpable() then
-            luasnip.expand_or_jump()
-          end
+          if luasnip.expand_or_locally_jumpable() then luasnip.expand_or_jump() end
         end, { 'i', 's' }),
         ['<C-h>'] = cmp.mapping(function()
-          if luasnip.locally_jumpable(-1) then
-            luasnip.jump(-1)
-          end
+          if luasnip.locally_jumpable(-1) then luasnip.jump(-1) end
         end, { 'i', 's' }),
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
@@ -191,9 +181,7 @@ return { -- Autocompletion
         -- NOTE: entry instead of _ if I want the expandable entry...
         format = function(_, item)
           -- Add icons to LSP kinds
-          if lsp_icons[item.kind] then
-            item.kind = lsp_icons[item.kind] .. item.kind
-          end
+          if lsp_icons[item.kind] then item.kind = lsp_icons[item.kind] .. item.kind end
 
           -- Define truncation widths for 'abbr' and 'menu'
           local widths = {
@@ -202,9 +190,7 @@ return { -- Autocompletion
           }
           -- Truncate the 'abbr' and 'menu' fields if they exceed the width
           for key, width in pairs(widths) do
-            if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
-              item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. '…'
-            end
+            if item[key] and vim.fn.strdisplaywidth(item[key]) > width then item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. '…' end
           end
 
           -- Handle expandable indicator (if using snippets or other expandable items)

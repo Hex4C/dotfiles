@@ -23,21 +23,11 @@ return {
     local modes = { 'n', 'v', 'x' }
 
     -- 1. Define the functions once
-    local scroll_up = function()
-      neoscroll.ctrl_u { duration = 100, easing = 'sine' }
-    end
-    local scroll_down = function()
-      neoscroll.ctrl_d { duration = 100, easing = 'sine' }
-    end
-    local scroll_fwd = function()
-      neoscroll.ctrl_f { duration = 300, easing = 'sine' }
-    end
-    local scroll_y = function()
-      neoscroll.scroll(-0.1, { move_cursor = false, duration = 100 })
-    end
-    local scroll_e = function()
-      neoscroll.scroll(0.1, { move_cursor = false, duration = 100 })
-    end
+    local scroll_up = function() neoscroll.ctrl_u { duration = 100, easing = 'sine' } end
+    local scroll_down = function() neoscroll.ctrl_d { duration = 100, easing = 'sine' } end
+    local scroll_fwd = function() neoscroll.ctrl_f { duration = 300, easing = 'sine' } end
+    local scroll_y = function() neoscroll.scroll(-0.1, { move_cursor = false, duration = 100 }) end
+    local scroll_e = function() neoscroll.scroll(0.1, { move_cursor = false, duration = 100 }) end
 
     -- 2. Create tables to group keys with the same action
     local key_groups = {

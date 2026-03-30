@@ -5,9 +5,7 @@ return {
   keys = {
     {
       '<leader>st',
-      function()
-        vim.cmd 'silent! TodoTelescope'
-      end,
+      function() vim.cmd 'silent! TodoTelescope' end,
       mode = 'n',
       desc = '[S]Search [T]odo',
     },

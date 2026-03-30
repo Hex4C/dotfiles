@@ -22,9 +22,7 @@ return {
     {
       '<CR>',
       mode = { 'n', 'x', 'o' },
-      function()
-        require('flash').jump()
-      end,
+      function() require('flash').jump() end,
       desc = 'Flash',
     },
     -- {
