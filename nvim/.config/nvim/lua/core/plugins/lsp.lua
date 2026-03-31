@@ -152,6 +152,7 @@ return {
             basedpyright = {
               disableOrganizeImports = true, -- Let Ruff handle import sorting
               analysis = {
+                -- diagnosticMode = 'openFilesOnly',
                 -- Severity overrides: disable everything Ruff already covers
                 -- to avoid duplicate diagnostics
                 autoFormatStrings = false,
