@@ -1,7 +1,6 @@
 return {
   'saecki/crates.nvim',
   tag = 'stable',
-  -- PERF: Maybe remove this line below in the future.
   -- Right now it only loads the plugin for rust and toml files.
   ft = { 'rust', 'toml' },
   config = function()
