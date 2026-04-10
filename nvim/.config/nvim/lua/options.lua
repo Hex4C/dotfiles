@@ -83,3 +83,6 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 
 -- [[ Diagnostic config ]]
 require 'diagnostic-config'
+
+-- [[ Folding config]]
+require 'folds'
