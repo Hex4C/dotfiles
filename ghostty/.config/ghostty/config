@@ -28,9 +28,9 @@ window-position-y = 27
 macos-titlebar-style = transparent
 
 # Darker colours 0 - 7
-palette = 0=#000000   
-palette = 1=#cc4444  
-palette = 2=#44cc44 
+palette = 0=#000000
+palette = 1=#cc4444
+palette = 2=#44cc44
 palette = 3=#cccc44
 palette = 4=#4444cc
 palette = 5=#cc44cc
@@ -38,14 +38,14 @@ palette = 6=#8ef9fd
 palette = 7=#cdcdcd
 
 # Bright colors (8-15)
-palette = 8=#444444 
-palette = 9=#cc4444 
+palette = 8=#444444
+palette = 9=#cc4444
 palette = 10=#44cc44
 palette = 11=#cccc44
 palette = 12=#4444cc
-palette = 13=#cc44cc 
-palette = 14=#8ef9fd  
-palette = 15=#ffffff 
+palette = 13=#cc44cc
+palette = 14=#8ef9fd
+palette = 15=#ffffff
 
 
 #font-thicken = true
