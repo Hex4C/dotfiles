@@ -135,7 +135,18 @@ return {
       }
 
       local servers = {
-        clangd = {},
+        clangd = {
+          -- cmd = {
+          --   'clangd',
+          --   '--background-index',
+          --   '--clang-tidy',
+          --   '--header-insertion=iwyu',
+          --   '--completion-style=detailed',
+          --   '--function-arg-placeholders',
+          --   '--fallback-style=llvm',
+          -- },
+          -- root_markers = { '.clangd', 'compile_commands.json' },
+        },
         gopls = {},
         ruff = {
           init_options = {
@@ -249,6 +260,8 @@ return {
         'ruff', -- Used to format python code (changed from black)
         'markdownlint', -- Markdownformatter
         'prettier',
+        'clang-format',
+        'rust_analyzer',
       })
 
       -- BUG: At the moment of writing this it doesn't entirely work when being lazy loaded.
