@@ -7,6 +7,9 @@ return {
   event = 'VeryLazy',
   config = function()
     local neoscroll = require 'neoscroll'
+
+    vim.opt.mousescroll = 'ver:0,hor:0'
+
     neoscroll.setup {
       mappings = {
         '<C-u>',
@@ -41,6 +44,9 @@ return {
       ['<C-f>'] = scroll_fwd,
       ['<C-y>'] = scroll_y,
       ['<C-e>'] = scroll_e,
+      -- Map the trackpad/mouse wheel events here:
+      ['<ScrollWheelUp>'] = scroll_y,
+      ['<ScrollWheelDown>'] = scroll_e,
     }
 
     -- 3. Loop through the key groups to set the keymaps
