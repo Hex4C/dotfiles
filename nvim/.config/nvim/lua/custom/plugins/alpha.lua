@@ -29,17 +29,15 @@ return {
            ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
     ]]
 
+    local fff = require 'fff'
     dashboard.section.header.val = vim.split(logo, '\n')
     -- stylua: ignore
     dashboard.section.buttons.val = {
-      dashboard.button("f", " " .. " Find file",       "<cmd> Telescope find_files<cr>"),
-      dashboard.button("e", " " .. " File explorer",   "<cmd> Neotree float <cr>"),
-      -- BUG: Currently a little bit broken, will look into it more later
-      -- dashboard.button("n", " " .. " New file",        [[<cmd> ene <BAR> startinsert <cr>]]),
-      dashboard.button("r", " " .. " Recent files",    [[<cmd> Telescope oldfiles<cr>]]),
-      dashboard.button("c", " " .. " Config",          "<cmd> Telescope find_files cwd=~/.config/nvim <cr>"),
+      dashboard.button("f", " " .. " Find file",       function() fff.find_files() end),
+      dashboard.button("e", " " .. " File explorer",   "<cmd> Neotree float <cr>"), -- Strings still work too!
+      dashboard.button("r", " " .. " Recent files",    function() fff.find_files() end),
+      dashboard.button("c", " " .. " Config",          function() fff.find_files({ cwd = vim.fn.stdpath('config') }) end),
       dashboard.button("l", "󰒲 " .. " Lazy",            "<cmd> Lazy <cr>"),
-      -- dashboard.button("m", "" .. " Mason",            "<cmd> Mason <cr>"),
       dashboard.button("q", " " .. " Quit",            "<cmd> qa <cr>"),
     }
     for _, button in ipairs(dashboard.section.buttons.val) do

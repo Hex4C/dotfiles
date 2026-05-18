@@ -40,6 +40,8 @@ require('lazy').setup({
 
   require 'core.plugins.telescope',
 
+  require 'core.plugins.fff',
+
   -- LSP Plugins
   require 'core.plugins.lsp',
 
