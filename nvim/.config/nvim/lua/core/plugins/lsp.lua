@@ -151,6 +151,7 @@ return {
         ruff = {
           init_options = {
             settings = {
+              configurationPreference = 'filesystemFirst',
               lint = {
                 select = { 'E', 'F', 'B', 'UP', 'W', 'N' },
                 ignore = { 'F841', 'N806', 'N803' },
