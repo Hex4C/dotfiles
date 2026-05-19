@@ -169,15 +169,6 @@ git:
   # Config relating to committing
   commit:
     # If true, pass '--signoff' flag when committing
-    signOff: false
-    # Automatic WYSIWYG wrapping of the commit message as you type
-    autoWrapCommitMessage: true
-    # If autoWrapCommitMessage is true, the width to wrap to
-    autoWrapWidth: 72
-  # Config relating to merging
-  merging:
-    # If true, run merges in a subprocess so that if a commit message is required, Lazygit will not hang
-    # Only applicable to unix users.
     manualCommit: false
     # Extra args passed to `git merge`, e.g. --no-ff
     args: ""
@@ -329,8 +320,8 @@ keybinding:
     rangeSelectUp: <s-up>
     prevBlock: <left>
     nextBlock: <right>
-    prevBlock-alt: h
-    nextBlock-alt: l
+    prevBlock-alt: <disabled>
+    nextBlock-alt: <disabled>
     nextBlock-alt2: <tab>
     prevBlock-alt2: <backtab>
     jumpToBlock:
@@ -366,8 +357,8 @@ keybinding:
     pullFiles: p
     refresh: R
     createPatchOptionsMenu: <c-p>
-    nextTab: ']'
-    prevTab: '['
+    nextTab: 'l'
+    prevTab: 'h'
     nextScreenMode: +
     prevScreenMode: _
     undo: z
