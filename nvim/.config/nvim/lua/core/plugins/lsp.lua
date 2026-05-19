@@ -154,8 +154,15 @@ return {
               configurationPreference = 'filesystemFirst',
               lint = {
                 select = { 'E', 'F', 'B', 'UP', 'W', 'N' },
-                ignore = { 'F841', 'N806', 'N803' },
+                -- Ignore unused variable (f841) basedpyright takes care of it
+                -- ignore = { 'F841' },
               },
+            },
+          },
+          -- Capabilities for ruff to play nice with basedpyright, default is utf-8 for ruff
+          capabilities = {
+            general = {
+              positionEncodings = { 'utf-16' },
             },
           },
         },
@@ -168,7 +175,8 @@ return {
                 -- Severity overrides: disable everything Ruff already covers
                 -- to avoid duplicate diagnostics
                 autoFormatStrings = false,
-                typeCheckingMode = 'basic',
+                -- typeCheckingMode = 'basic',
+                -- typeCheckingMode = 'recommended', (should be on for larger and long term projects)
                 diagnosticSeverityOverrides = {
                   -- reportAny = false,
                   -- Unused variables / imports (Ruff: F841, F401)
@@ -186,7 +194,7 @@ return {
                   -- Duplicate imports (Ruff: E501, F811)
                   reportDuplicateImport = false,
                   -- Undefined variables / names (Ruff: F821)
-                  reportUndefinedVariable = false,
+                  reportUndefinedVariable = 'error',
                   -- Shadowing (Ruff: A001, A002, A003)
                   reportShadowedImports = false,
                   -- Type-ignore comments — let Ruff manage these (PGH003)
@@ -279,8 +287,16 @@ return {
         ensure_installed = {},
       }
 
+      -- TODO: Maybe add this code along with the uncommented line in the for loop
+      -- later in the future...
+
+      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+      -- capabilities.general = capabilities.general or {}
+      -- capabilities.general.positionEncodings = { 'utf-8', 'utf-16' }
+
       -- Much better solution for enabling lsp servers
       for server_name, config in pairs(servers) do
+        -- config.capabilities = vim.tbl_deep_extend('force', capabilities, config.capabilities or {})
         vim.lsp.config(server_name, config)
       end
     end,
