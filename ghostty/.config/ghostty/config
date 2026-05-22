@@ -12,6 +12,7 @@ cursor-opacity = 0.65
 cursor-style = block 
 cursor-style-blink = false
 shell-integration-features = no-cursor
+mouse-hide-while-typing = true
 
 # Toggle full screen with fn + f on mac
 window-width = 170
