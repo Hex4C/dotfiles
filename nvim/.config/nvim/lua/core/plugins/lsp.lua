@@ -149,6 +149,7 @@ return {
         },
         gopls = {},
         ruff = {
+          -- root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml', '.git' },
           init_options = {
             settings = {
               configurationPreference = 'filesystemFirst',
@@ -176,8 +177,9 @@ return {
                 -- to avoid duplicate diagnostics
                 autoFormatStrings = false,
                 -- typeCheckingMode = 'basic',
-                -- typeCheckingMode = 'recommended', (should be on for larger and long term projects)
+                -- typeCheckingMode = 'recommended',
                 diagnosticSeverityOverrides = {
+                  -- reportPrivateImportUsage = true,
                   -- reportAny = false,
                   -- Unused variables / imports (Ruff: F841, F401)
                   reportUnusedVariable = 'hint',
