@@ -47,7 +47,10 @@ return {
     vim.keymap.set('n', '<m-a>', function() harpoon:list():select(1) end)
     vim.keymap.set('n', '<m-s>', function() harpoon:list():select(2) end)
     vim.keymap.set('n', '<m-d>', function() harpoon:list():select(3) end)
-    vim.keymap.set('n', '<m-f>', function() harpoon:list():select(4) end)
+
+    -- The following keybind will currently not work as intended (thus disabled)
+    -- occurs due to conflict with keyboards and option defintion on macOS
+    -- vim.keymap.set('n', '<m-f>', function() harpoon:list():select(4) end)
 
     -- Toggle previous & next buffers stored within Harpoon list
     vim.keymap.set('n', '<m-S-P>', function() harpoon:list():prev() end)
