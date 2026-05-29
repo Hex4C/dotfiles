@@ -55,4 +55,9 @@ theme = Catppuccin Mocha
 #theme = Catppuccin Macchiato
 #background = 000000
 
-macos-option-as-alt = right
+# macos-option-as-alt = right
+keybind = super+a=text:\x1ba
+keybind = super+s=text:\x1bs
+keybind = super+d=text:\x1bd
+# The following keybind can be enabled but will disable the search functionality 
+# keybind = super+f=text:\x1bf 
