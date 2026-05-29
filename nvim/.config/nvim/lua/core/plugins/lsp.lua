@@ -160,6 +160,9 @@ return {
               },
             },
           },
+          ty = {},
+          -- A more robust LSP for perhaps larger code bases?
+          -- pyrefly = {},
           -- Capabilities for ruff to play nice with basedpyright, default is utf-8 for ruff
           capabilities = {
             general = {
@@ -167,52 +170,52 @@ return {
             },
           },
         },
-        basedpyright = {
-          settings = {
-            basedpyright = {
-              disableOrganizeImports = true, -- Let Ruff handle import sorting
-              analysis = {
-                -- diagnosticMode = 'openFilesOnly',
-                -- Severity overrides: disable everything Ruff already covers
-                -- to avoid duplicate diagnostics
-                autoFormatStrings = false,
-                -- typeCheckingMode = 'basic',
-                -- typeCheckingMode = 'recommended',
-                diagnosticSeverityOverrides = {
-                  -- reportPrivateImportUsage = true,
-                  -- reportAny = false,
-                  -- Unused variables / imports (Ruff: F841, F401)
-                  reportUnusedVariable = 'hint',
-                  reportUnusedImport = false,
-                  -- Unused function params / self (Ruff: ARG)
-                  reportUnusedParameter = false,
-                  -- Unused classes, functions, expressions (Ruff: B018, F811)
-                  reportUnusedClass = false,
-                  reportUnusedFunction = false,
-                  reportUnusedExpression = false,
-                  reportUnusedExceptHandler = false,
-                  -- Star imports & wildcard (Ruff: F403, F405)
-                  reportWildcardImportFromLibrary = false,
-                  -- Duplicate imports (Ruff: E501, F811)
-                  reportDuplicateImport = false,
-                  -- Undefined variables / names (Ruff: F821)
-                  reportUndefinedVariable = 'error',
-                  -- Shadowing (Ruff: A001, A002, A003)
-                  reportShadowedImports = false,
-                  -- Type-ignore comments — let Ruff manage these (PGH003)
-                  enableTypeIgnoreComments = false,
-                  -- Missing return type / param type — Ruff has ANN rules
-                  reportMissingParameterType = false,
-                  reportMissingTypeArgument = false,
-                  -- Assert usage (Ruff: S101, B011)
-                  reportAssertAlwaysTrue = false,
-                  -- Deprecated usage (Ruff: UP, PYI)
-                  reportDeprecated = false,
-                },
-              },
-            },
-          },
-        },
+        -- basedpyright = {
+        --   settings = {
+        --     basedpyright = {
+        --       disableOrganizeImports = true, -- Let Ruff handle import sorting
+        --       analysis = {
+        --         -- diagnosticMode = 'openFilesOnly',
+        --         -- Severity overrides: disable everything Ruff already covers
+        --         -- to avoid duplicate diagnostics
+        --         autoFormatStrings = false,
+        --         -- typeCheckingMode = 'basic',
+        --         -- typeCheckingMode = 'recommended',
+        --         diagnosticSeverityOverrides = {
+        --           -- reportPrivateImportUsage = true,
+        --           -- reportAny = false,
+        --           -- Unused variables / imports (Ruff: F841, F401)
+        --           reportUnusedVariable = 'hint',
+        --           reportUnusedImport = false,
+        --           -- Unused function params / self (Ruff: ARG)
+        --           reportUnusedParameter = false,
+        --           -- Unused classes, functions, expressions (Ruff: B018, F811)
+        --           reportUnusedClass = false,
+        --           reportUnusedFunction = false,
+        --           reportUnusedExpression = false,
+        --           reportUnusedExceptHandler = false,
+        --           -- Star imports & wildcard (Ruff: F403, F405)
+        --           reportWildcardImportFromLibrary = false,
+        --           -- Duplicate imports (Ruff: E501, F811)
+        --           reportDuplicateImport = false,
+        --           -- Undefined variables / names (Ruff: F821)
+        --           reportUndefinedVariable = 'error',
+        --           -- Shadowing (Ruff: A001, A002, A003)
+        --           reportShadowedImports = false,
+        --           -- Type-ignore comments — let Ruff manage these (PGH003)
+        --           enableTypeIgnoreComments = false,
+        --           -- Missing return type / param type — Ruff has ANN rules
+        --           reportMissingParameterType = false,
+        --           reportMissingTypeArgument = false,
+        --           -- Assert usage (Ruff: S101, B011)
+        --           reportAssertAlwaysTrue = false,
+        --           -- Deprecated usage (Ruff: UP, PYI)
+        --           reportDeprecated = false,
+        --         },
+        --       },
+        --     },
+        --   },
+        -- },
         lua_ls = {
           settings = {
             Lua = {
