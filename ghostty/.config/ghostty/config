@@ -56,8 +56,11 @@ theme = Catppuccin Mocha
 #background = 000000
 
 # macos-option-as-alt = right
+# Keybinds 
 keybind = super+a=text:\x1ba
 keybind = super+s=text:\x1bs
 keybind = super+d=text:\x1bd
 # The following keybind can be enabled but will disable the search functionality 
 # keybind = super+f=text:\x1bf 
+
+tab-inherit-working-directory = true
