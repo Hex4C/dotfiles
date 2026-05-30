@@ -253,6 +253,7 @@ return {
         },
         jsonls = {},
         vue_ls = {},
+        svelte = {},
         emmet_language_server = {},
       }
 
