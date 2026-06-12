@@ -22,19 +22,20 @@ return {
       end
 
       -- Navigation
-      map('n', ']c', function()
+      -- Navigation
+      map('n', 'öc', function()
         if vim.wo.diff then
           vim.cmd.normal { ']c', bang = true }
         else
-          gitsigns.nav_hunk 'next'
+          gitsigns.nav_hunk('next', { navigation_message = false })
         end
       end, { desc = 'Jump to next git [c]hange' })
 
-      map('n', '[c', function()
+      map('n', 'äc', function()
         if vim.wo.diff then
           vim.cmd.normal { '[c', bang = true }
         else
-          gitsigns.nav_hunk 'prev'
+          gitsigns.nav_hunk('prev', { navigation_message = false })
         end
       end, { desc = 'Jump to previous git [c]hange' })
 

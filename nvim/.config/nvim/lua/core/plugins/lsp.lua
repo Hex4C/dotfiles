@@ -252,7 +252,7 @@ return {
           filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
         },
         jsonls = {},
-        vue_ls = {},
+        -- vue_ls = {},
         svelte = {},
         emmet_language_server = {},
       }

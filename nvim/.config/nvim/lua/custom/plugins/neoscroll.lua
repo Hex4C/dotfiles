@@ -36,10 +36,8 @@ return {
     local key_groups = {
       -- C-u and ä both scroll up
       ['<C-u>'] = scroll_up,
-      ['ä'] = scroll_up,
       -- C-d and ö both scroll down
       ['<C-d>'] = scroll_down,
-      ['ö'] = scroll_down,
       -- Other existing mappings
       ['<C-f>'] = scroll_fwd,
       ['<C-y>'] = scroll_y,
