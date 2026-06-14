@@ -14,19 +14,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+zstyle ':omz:update' mode reminder
+zstyle ':omz:update' frequency 14
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -47,14 +36,6 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
   # zsh-autosuggestions
@@ -109,9 +90,6 @@ alias pip="pip3"
 eval "$(fzf --zsh)"
 bindkey "^F" fzf-cd-widget
 bindkey -r "^[c"
-
-# Batt (Mac battery management)
-# alias bs="batt status"
 
 # Coloured cat (ccat)
 alias c="ccat"
