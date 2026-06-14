@@ -59,7 +59,10 @@ require('lazy').setup({
 
   require 'core.plugins.nvim-treesitter',
 
+  require 'core.plugins.snacks',
+
   require 'core.plugins.indent-line',
+
   require 'core.plugins.lint',
 
   require 'core.plugins.autopairs',
