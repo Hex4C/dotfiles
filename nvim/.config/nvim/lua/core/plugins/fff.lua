@@ -1,5 +1,8 @@
 return {
   'dmtrKovalenko/fff.nvim',
+  -- NOTE: Toggle when in develop mode.
+  -- 'fff.nvim',
+  -- dir = vim.fn.expand 'dir',
   lazy = false, -- The plugin lazy-initialises itself
   build = function()
     -- Downloads a prebuilt binary or falls back to cargo build
@@ -28,6 +31,8 @@ return {
       select_tab = '<C-t>',
       move_up = { '<Up>', '<C-p>' },
       move_down = { '<Down>', '<C-n>' },
+      grep_jump_to_next_file = { '<C-A-n>', '<A-Down>' },
+      grep_jump_to_prev_file = { '<C-A-p>', '<A-Up>' },
     },
   },
   config = function(_, opts)
