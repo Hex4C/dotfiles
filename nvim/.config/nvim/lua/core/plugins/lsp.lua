@@ -157,7 +157,7 @@ return {
               lint = {
                 select = { 'E', 'F', 'B', 'UP', 'W', 'N' },
                 -- Ignore unused variable (f841) basedpyright takes care of it
-                -- ignore = { 'F841' },
+                ignore = { 'F841' },
               },
             },
           },
