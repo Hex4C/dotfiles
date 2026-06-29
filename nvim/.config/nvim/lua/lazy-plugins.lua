@@ -57,7 +57,7 @@ require('lazy').setup({
 
   require 'core.plugins.mini',
 
-  require 'core.plugins.nvim-treesitter',
+  require 'core.plugins.treesitter',
 
   require 'core.plugins.snacks',
 
