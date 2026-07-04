@@ -73,6 +73,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- conceallevel required for obsidian.nvim
+vim.opt.conceallevel = 1
+
 -- Open help pages in vertical mode
 vim.api.nvim_create_autocmd('BufWinEnter', {
   group = vim.api.nvim_create_augroup('help_window_right', { clear = true }),

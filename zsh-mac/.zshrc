@@ -71,7 +71,7 @@ alias sn='git add . && git commit -m "sc" && git push'
 alias lg='XDG_CONFIG_HOME="$HOME/.config" lazygit'
 
 # Notes alias
-alias notes="cd ~/Documents/Obsidian/obsidian-notes && git fetch"
+alias notes="cd ~/Documents/Obsidian/obsidian-notes/JespersVault/ && git fetch"
 alias v="nvim"
 alias vf="nvim ."
 alias cdd="cd ~/Desktop" 
