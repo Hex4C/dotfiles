@@ -97,6 +97,6 @@ alias c="ccat"
 # Avoid typing the wrong command...
 alias vim="nvim"
 
+alias onew="notes && nvim -c \"lua require('lazy').load({ plugins = { 'obsidian.nvim' } })\" -c 'Obsidian new'"
 
 alias conda-init="source /opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh && conda activate base"
-
