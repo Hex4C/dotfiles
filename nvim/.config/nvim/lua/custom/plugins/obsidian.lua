@@ -14,10 +14,82 @@ return {
   ---@module 'obsidian'
   ---@type obsidian.config
   opts = {
+    callbacks = {
+
+      enter_note = function(_)
+        if vim.b.obsidian_maps_initialized then return end
+        pcall(vim.keymap.del, 'n', '<CR>', { buffer = true })
+        pcall(vim.keymap.del, 'n', '<leader><CR>', { buffer = true })
+
+        -- 2. Search & Navigation Commands
+        vim.keymap.set('n', '<leader><CR>', '<CMD>Obsidian smart_action<CR>', {
+          buffer = true,
+          desc = '[O]bsidian Smart action',
+        })
+
+        -- One keymap is duplicated here but it is more comfortable with <leader>os
+        vim.keymap.set('n', '<leader>og', '<CMD>Obsidian search<CR>', {
+          buffer = true,
+          desc = '[O]bsidian [G]rep search notes',
+        })
+        vim.keymap.set('n', '<leader>os', '<CMD>Obsidian search<CR>', {
+          buffer = true,
+          desc = '[O]bsidian [s]earch notes',
+        })
+        vim.keymap.set('n', '<leader>of', '<CMD>Obsidian quick_switch<CR>', {
+          buffer = true,
+          desc = '[O]bsidian [F]ind / quick switch note',
+        })
+
+        -- vim.keymap.set('n', '<leader>ow', '<CMD>Obsidian workspace<CR>', {
+        --   buffer = true,
+        --   desc = '[O]bsidian [W]orkspace switch',
+        -- })
+
+        -- Links & Backlinks
+        vim.keymap.set('n', '<leader>ol', '<CMD>Obsidian links<CR>', {
+          buffer = true,
+          desc = '[O]bsidian [L]inks list',
+        })
+        vim.keymap.set('v', '<leader>ol', '<CMD>Obsidian link<CR>', {
+          buffer = true,
+          desc = '[O]bsidian [L]ink visual selection to existing note',
+        })
+        vim.keymap.set('n', '<leader>ob', '<CMD>Obsidian backlinks<CR>', {
+          buffer = true,
+          desc = '[O]bsidian [B]acklinks for current note',
+        })
+
+        -- Creation & Customization
+        vim.keymap.set('n', '<leader>on', '<CMD>Obsidian new<CR>', {
+          buffer = true,
+          desc = '[O]bsidian [N]ew note',
+        })
+        vim.keymap.set({ 'v', 'x' }, '<leader>on', '<CMD>Obsidian link_new<CR>', {
+          buffer = true,
+          desc = '[O]bsidian [N]ew note from visual selection',
+        })
+        vim.keymap.set('n', '<leader>or', '<CMD>Obsidian rename<CR>', {
+          buffer = true,
+          desc = '[O]bsidian [R]ename note file',
+        })
+        vim.keymap.set('n', '<leader>oc', '<CMD>Obsidian toc<CR>', {
+          buffer = true,
+          desc = '[O]bsidian [C]ontents table (TOC)',
+        })
+
+        vim.b.obsidian_maps_initialized = true
+      end,
+    },
     legacy_commands = false, -- this will be removed in 4.0.0
     frontmatter = {
       enabled = true,
     },
+
+    -- PARA inbox
+    new_notes_location = 'notes_subdir',
+    notes_subdir = '05_INBOX',
+
     completion = {
       min_chars = 2,
       match_case = true,
