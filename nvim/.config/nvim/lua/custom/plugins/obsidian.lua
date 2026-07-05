@@ -3,6 +3,7 @@ return {
   lazy = true,
   version = '*', -- use latest release, remove to use latest commit
   -- ft = 'markdown',
+  -- event = 'VimEnter',
   event = {
     'BufReadPre /Users/jesperlindeberg/Documents/Obsidian/obsidian-notes/JespersVault/*.md',
     'BufNewFile /Users/jesperlindeberg/Documents/Obsidian/obsidian-notes/JespersVault/*.md',
