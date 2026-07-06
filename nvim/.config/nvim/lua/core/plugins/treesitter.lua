@@ -5,6 +5,9 @@ return {
     event = { 'BufReadPost', 'BufNewFile' },
     lazy = true,
     opts = {
+      -- Switch to true maybe sometime in the future when wasmtime is used
+      -- and nvim can be compiled with it.
+      prefer_wasm = false,
       install_popular = false,
       update_cadence = 'weekly',
     },
