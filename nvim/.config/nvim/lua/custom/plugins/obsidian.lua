@@ -79,6 +79,22 @@ return {
           desc = '[O]bsidian [C]ontents table (TOC)',
         })
 
+        -- Paste hyperlinks for obsidian.nvim
+        vim.keymap.set('n', '<C-k>', function()
+          local clipboard = vim.fn.getreg('+'):gsub('%s+', '')
+
+          if clipboard:match '^https?://' or clipboard:match '^www%.' then
+            local link_snippet = ' [](' .. clipboard .. ')'
+            vim.api.nvim_put({ link_snippet }, 'c', false, true)
+            local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+            local new_col = col - (#clipboard + 3)
+            vim.api.nvim_win_set_cursor(0, { row, new_col })
+            vim.cmd 'startinsert'
+          else
+            vim.notify('Clipboard does not contain a valid URL!', vim.log.levels.WARN)
+          end
+        end, { desc = 'Paste URL as Markdown link skeleton and enter insert mode' })
+
         vim.b.obsidian_maps_initialized = true
       end,
     },
