@@ -1,12 +1,20 @@
 return {
   -- OPTIONAL: The community replacement for downloading extra parsers.
-  -- {
-  --   'arborist-ts/arborist.nvim',
-  --   lazy = false,
-  -- },
+  {
+    'arborist-ts/arborist.nvim',
+    event = { 'BufReadPost', 'BufNewFile' },
+    lazy = true,
+    opts = {
+      install_popular = false,
+      update_cadence = 'weekly',
+    },
+  },
 
   {
     'nvim-treesitter/nvim-treesitter-context',
+    event = { 'BufReadPost', 'BufNewFile' },
+    lazy = true,
+    dependencies = { 'arborist-ts/arborist.nvim' },
     config = function()
       vim.api.nvim_create_autocmd('FileType', {
         callback = function(args)
