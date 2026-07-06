@@ -4,9 +4,9 @@ return {
   -- in the rendering of the tags if jumping quickly from a file
   -- without the tags to one with tags.
   --
-  -- lazy = true,
   -- event = { 'BufReadPost', 'BufNewFile' },
-  event = 'VimEnter',
+  event = 'VeryLazy',
+  lazy = true,
   dependencies = { 'nvim-lua/plenary.nvim' },
   keys = {
     {

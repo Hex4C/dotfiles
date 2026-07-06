@@ -37,6 +37,9 @@ return {
     ---@diagnostic disable-next-line: missing-fields
     require('noice').setup {
       lsp = {
+        signature = {
+          enabled = false,
+        },
         -- Disable conflict with Fidget.nvim
         progress = {
           enabled = false,
