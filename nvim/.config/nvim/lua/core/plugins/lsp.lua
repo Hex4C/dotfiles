@@ -21,7 +21,7 @@ return {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     lazy = true,
-    event = 'BufReadPre',
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
@@ -305,6 +305,7 @@ return {
       for server_name, config in pairs(servers) do
         -- config.capabilities = vim.tbl_deep_extend('force', capabilities, config.capabilities or {})
         vim.lsp.config(server_name, config)
+        vim.lsp.enable(server_name)
       end
     end,
   },

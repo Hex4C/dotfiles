@@ -76,6 +76,8 @@ vim.opt.scrolloff = 10
 -- conceallevel required for obsidian.nvim
 vim.opt.conceallevel = 1
 
+vim.opt.laststatus = 0
+
 -- Open help pages in vertical mode
 vim.api.nvim_create_autocmd('BufWinEnter', {
   group = vim.api.nvim_create_augroup('help_window_right', { clear = true }),
