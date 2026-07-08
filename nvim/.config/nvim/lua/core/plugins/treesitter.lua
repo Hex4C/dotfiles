@@ -10,6 +10,7 @@ return {
       prefer_wasm = false,
       install_popular = false,
       update_cadence = 'weekly',
+      ensure_installed = { 'zsh', 'rust', 'python', 'regex', 'css', 'make', 'sql', 'json', 'go', 'bash', 'yaml', 'toml' },
     },
   },
 
