@@ -39,15 +39,19 @@ vim.g.have_nerd_font = true
 
 -- Setting options
 require 'options'
-
--- Keymaps
 require 'keymaps'
 
 -- Install the Lazy plugin manager
-require 'lazy-bootstrap'
-
 -- Install lazy plugins
-require 'lazy-plugins'
-
 -- Add plugin setups
+require 'lazy-bootstrap'
+require 'lazy-plugins'
 require 'plugin-setups'
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'VeryLazy',
+  callback = function()
+    require 'diagnostic-config'
+    require 'folds'
+  end,
+})

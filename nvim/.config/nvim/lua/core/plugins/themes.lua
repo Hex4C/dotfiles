@@ -2,9 +2,17 @@ return {
   'catppuccin/nvim',
   name = 'catppuccin',
   priority = 1000,
-  init = function()
+  opts = {
+    compile_path = vim.fn.stdpath 'cache' .. '/catppuccin',
+    custom_highlights = function(colors)
+      return {
+        Comment = { style = {} }, -- removes italic/bold, making it plain text
+      }
+    end,
+  },
+  config = function(_, opts)
+    require('catppuccin').setup(opts)
     vim.cmd.colorscheme 'catppuccin-mocha'
-    vim.cmd.hi 'Comment gui=none'
   end,
 }
 

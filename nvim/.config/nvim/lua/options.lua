@@ -76,7 +76,13 @@ vim.opt.scrolloff = 10
 -- conceallevel required for obsidian.nvim
 vim.opt.conceallevel = 1
 
+-- Disable statusline (we have lualine)
 vim.opt.laststatus = 0
+
+-- Disable native netrw (neo-tree and oil instead)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_gtags = 1
 
 -- Open help pages in vertical mode
 vim.api.nvim_create_autocmd('BufWinEnter', {
@@ -86,9 +92,3 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
     if vim.bo.filetype == 'help' or vim.bo.filetype == 'man' then vim.cmd.wincmd 'L' end
   end,
 })
-
--- [[ Diagnostic config ]]
-require 'diagnostic-config'
-
--- [[ Folding config]]
-require 'folds'
