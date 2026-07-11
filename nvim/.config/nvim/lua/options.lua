@@ -74,7 +74,7 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- conceallevel required for obsidian.nvim
-vim.opt.conceallevel = 1
+vim.opt.conceallevel = 0
 
 -- Disable statusline (we have lualine)
 vim.opt.laststatus = 0

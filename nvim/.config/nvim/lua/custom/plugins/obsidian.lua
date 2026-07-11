@@ -16,8 +16,10 @@ return {
   ---@type obsidian.config
   opts = {
     callbacks = {
-
       enter_note = function(_)
+        -- Set the conceallevel to 1
+        vim.opt.conceallevel = 1
+
         if vim.b.obsidian_maps_initialized then return end
         pcall(vim.keymap.del, 'n', '<CR>', { buffer = true })
         pcall(vim.keymap.del, 'n', '<leader><CR>', { buffer = true })
