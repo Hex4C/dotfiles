@@ -1,0 +1,17 @@
+{
+  "lastChangelogVersion": "0.80.6",
+  "theme": "catppuccin-macchiato",
+  "defaultProvider": "openrouter",
+  "defaultModel": "deepseek/deepseek-v4-flash",
+  "defaultThinkingLevel": "off",
+  "packages": [
+    "git:https://github.com/hasit/pi-community-themes@v0.3.0",
+    "npm:context-mode",
+    "npm:@ff-labs/pi-fff",
+    "npm:@narumitw/pi-btw",
+    "npm:pi-powerline-footer",
+    "npm:@gotgenes/pi-permission-system"
+  ],
+  "enableInstallTelemetry": false,
+  "hideThinkingBlock": false
+}

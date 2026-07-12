@@ -1,0 +1,23 @@
+{
+  "debugLog": false,
+  "permissionReviewLog": false,
+  "yoloMode": false,
+  "permission": {
+    "*": "allow",
+    "write": "ask",
+    "edit": "ask",
+    "path": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow"
+    },
+    "bash": {
+      "*": "allow",
+      "rm -rf *": "deny",
+      "sudo *": "ask",
+      "git *": "ask"
+    },
+    "external_directory": "ask"
+  }
+}
