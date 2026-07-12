@@ -48,10 +48,13 @@ require 'lazy-bootstrap'
 require 'lazy-plugins'
 require 'plugin-setups'
 
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'VeryLazy',
-  callback = function()
-    require 'diagnostic-config'
-    require 'folds'
-  end,
-})
+require 'diagnostic-config'
+require 'folds'
+
+-- vim.api.nvim_create_autocmd('User', {
+--   pattern = 'VeryLazy',
+--   callback = function()
+--     require 'diagnostic-config'
+--     require 'folds'
+--   end,
+-- })
