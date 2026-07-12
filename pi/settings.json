@@ -13,5 +13,13 @@
     "npm:@gotgenes/pi-permission-system"
   ],
   "enableInstallTelemetry": false,
-  "hideThinkingBlock": false
+  "hideThinkingBlock": false,
+  "enabledModels": [
+    "openrouter/deepseek/deepseek-v4-flash",
+    "openrouter/deepseek/deepseek-v4-pro",
+    "openrouter/z-ai/glm-5.2",
+    "openrouter/minimax/minimax-m3",
+    "openrouter/anthropic/claude-sonnet-4.6",
+    "openrouter/anthropic/claude-sonnet-5"
+  ]
 }
