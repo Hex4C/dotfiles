@@ -33,10 +33,11 @@ return {
     dashboard.section.header.val = vim.split(logo, '\n')
     -- stylua: ignore
     dashboard.section.buttons.val = {
-      dashboard.button("f", " " .. " Find file",       function() fff.find_files() end),
+      dashboard.button("f", "󰈞  Find/recent file", "<cmd>lua require('fff').find_files()<CR>"),
+      dashboard.button("g", "󰱽  Live grep", "<cmd>lua require('fff').live_grep()<CR>"),
       dashboard.button("e", " " .. " File explorer",   "<cmd> Neotree float <cr>"), -- Strings still work too!
-      dashboard.button("r", " " .. " Recent files",    function() fff.find_files() end),
-      dashboard.button("c", " " .. " Config",          function() fff.find_files({ cwd = vim.fn.stdpath('config') }) end),
+      -- dashboard.button("r", " " .. " Recent files",    "<cmd>lua require('fff').find_files()<CR>"),
+      dashboard.button("c", " " .. " Config",         "<cmd>lua require('fff').find_files({ cwd = vim.fn.stdpath('config') })<CR>"),
       dashboard.button("l", "󰒲 " .. " Lazy",            "<cmd> Lazy <cr>"),
       dashboard.button("q", " " .. " Quit",            "<cmd> qa <cr>"),
     }
