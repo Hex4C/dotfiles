@@ -17,8 +17,8 @@ return {
   opts = {
     callbacks = {
       enter_note = function(_)
-        -- Set the conceallevel to 1
-        vim.opt.conceallevel = 1
+        -- Set the conceallevel to 1 (window-local, so other buffers stay at 0)
+        vim.opt_local.conceallevel = 1
 
         if vim.b.obsidian_maps_initialized then return end
         pcall(vim.keymap.del, 'n', '<CR>', { buffer = true })
@@ -116,6 +116,7 @@ return {
     },
     ui = {
       enable = true,
+      ignore_conceal_warn = true,
     },
     picker = {
       name = 'telescope.nvim',
