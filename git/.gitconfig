@@ -21,19 +21,24 @@
 	diffFilter = delta --color-only
 
 [delta]
-    # Move n and N to move between diff sections
-    navigate = true
-    dark = true
-    features = catppuccin-mocha terminal-layout
+	navigate = true
+	dark = true
+	features = catppuccin-mocha terminal-layout
+	file-style = omit
+	file-decoration-style = none
+
+	hunk-header-style = file line-number syntax bold
+	hunk-header-decoration-style = magenta ul
+	file-transformation = "s|.*/||"
 
 [merge]
-    conflictStyle = zdiff3
+	conflictStyle = zdiff3
 
 [delta "terminal-layout"]
-    side-by-side = true
+	side-by-side = true
 
 [delta "lazygit"]
-    features = catppuccin-mocha
+	features = catppuccin-mocha
 
 [delta "catppuccin-mocha"]
 	blame-palette = "#1e1e2e #181825 #11111b #313244 #45475a"

@@ -32,7 +32,7 @@ gui:
   # - 'horizontal': split the window horizontally
   # - 'vertical': split the window vertically
   # - 'flexible': (default) split the window horizontally if the window is wide enough, otherwise split vertically
-  mainPanelSplitMode: flexible
+  mainPanelSplitMode: horizontal
   # How the window is split when in half screen mode (i.e. after hitting '+' once).
   # Possible values:
   # - 'left': split the window horizontally (side panel on the left, main view on the right)
