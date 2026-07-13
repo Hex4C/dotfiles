@@ -1,4 +1,4 @@
-# AGENT.md — Global Workflows for pi.dev
+# AGENTS.md — Global Workflows for pi.dev
 
 ## Operating Principles
 
