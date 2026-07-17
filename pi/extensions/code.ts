@@ -178,28 +178,56 @@ function toHeader(raw: string): string {
   return s;
 }
 
-/** Strip line comments and string/char literals so brace counting is sane. */
-function stripForBraces(line: string): string {
+/**
+ * Cross-line state for brace scanning: whether we're currently inside a
+ * `/* *\/` block comment or an unterminated string/template literal that
+ * spans lines. Carried between lines so multi-line constructs don't desync
+ * the brace-depth counter.
+ */
+interface ScanState {
+  inBlockComment: boolean;
+  quote: string | null;
+}
+
+/**
+ * Strip line/block comments and string/char/template literals so brace
+ * counting is sane. `state` persists across lines to handle multi-line block
+ * comments and multi-line strings/template literals.
+ */
+function stripForBraces(line: string, state: ScanState): string {
   let out = "";
   let i = 0;
-  let quote: string | null = null;
   while (i < line.length) {
     const c = line[i];
-    if (quote) {
+    if (state.inBlockComment) {
+      if (c === "*" && line[i + 1] === "/") {
+        state.inBlockComment = false;
+        i += 2;
+        continue;
+      }
+      i++;
+      continue;
+    }
+    if (state.quote) {
       if (c === "\\") {
         i += 2;
         continue;
       }
-      if (c === quote) quote = null;
-      i++;
-      continue;
-    }
-    if (c === '"' || c === "'" || c === "`") {
-      quote = c;
+      if (c === state.quote) state.quote = null;
       i++;
       continue;
     }
     if (c === "/" && line[i + 1] === "/") break;
+    if (c === "/" && line[i + 1] === "*") {
+      state.inBlockComment = true;
+      i += 2;
+      continue;
+    }
+    if (c === '"' || c === "'" || c === "`") {
+      state.quote = c;
+      i++;
+      continue;
+    }
     out += c;
     i++;
   }
@@ -240,10 +268,12 @@ const CSTYLE_METHOD =
 function extractCStyle(lines: string[]): Sym[] {
   const syms: Sym[] = [];
   let depth = 0;
+  const state: ScanState = { inBlockComment: false, quote: null };
   for (let i = 0; i < lines.length; i++) {
     const raw = lines[i];
     const t = raw.trim();
-    if (t && !isCommentLine(t)) {
+    // Skip declarations while inside a block comment or multi-line string.
+    if (!state.inBlockComment && !state.quote && t && !isCommentLine(t)) {
       let matched = false;
       for (const { kind, re } of CSTYLE_DECLS) {
         const m = raw.match(re);
@@ -260,7 +290,9 @@ function extractCStyle(lines: string[]): Sym[] {
         }
       }
       if (!matched) {
-        const mm = raw.match(CSTYLE_METHOD);
+        // Match against the trimmed line: CSTYLE_METHOD is `^`-anchored, so
+        // matching `raw` would miss every indented (e.g. in-class) method.
+        const mm = t.match(CSTYLE_METHOD);
         if (mm && !CONTROL_KEYWORDS.has(mm[1])) {
           syms.push({
             depth,
@@ -273,7 +305,7 @@ function extractCStyle(lines: string[]): Sym[] {
       }
     }
     // Track brace depth after processing the line.
-    const s = stripForBraces(raw);
+    const s = stripForBraces(raw, state);
     for (const ch of s) {
       if (ch === "{") depth++;
       else if (ch === "}") depth = Math.max(0, depth - 1);
@@ -346,10 +378,11 @@ function extractGo(lines: string[]): Sym[] {
 function extractRust(lines: string[]): Sym[] {
   const syms: Sym[] = [];
   let depth = 0;
+  const state: ScanState = { inBlockComment: false, quote: null };
   for (let i = 0; i < lines.length; i++) {
     const raw = lines[i];
     const t = raw.trim();
-    if (t && !t.startsWith("//")) {
+    if (!state.inBlockComment && !state.quote && t && !t.startsWith("//")) {
       const m = t.match(
         /^(?:pub(?:\([^)]*\))?\s+)?(?:async\s+)?(?:unsafe\s+)?(fn|struct|enum|trait|impl|mod|type|const|static)\s+([A-Za-z_]\w*)/,
       );
@@ -362,7 +395,7 @@ function extractRust(lines: string[]): Sym[] {
           line: i + 1,
         });
     }
-    const s = stripForBraces(raw);
+    const s = stripForBraces(raw, state);
     for (const ch of s) {
       if (ch === "{") depth++;
       else if (ch === "}") depth = Math.max(0, depth - 1);
@@ -372,6 +405,25 @@ function extractRust(lines: string[]): Sym[] {
 }
 
 // ── Ruby extractor ────────────────────────────────────────────────────
+
+// Leading keywords that open an `end`-terminated block.
+const RUBY_BLOCK_OPENER =
+  /^(?:class|module|def|if|unless|case|begin|while|until|for)\b/;
+// A trailing `do ... end` block, e.g. `items.each do |x|`.
+const RUBY_DO_BLOCK = /\bdo\b(?:\s*\|[^|]*\|)?\s*(?:#.*)?$/;
+
+/**
+ * Net nesting change for a Ruby line: block openers (+1) vs. `end` (−1).
+ * Only leading keywords count as openers, so trailing modifiers
+ * (`foo if bar`) are correctly ignored; inline blocks (`def f; end`) net zero.
+ */
+function rubyDelta(t: string): number {
+  let opens = 0;
+  if (RUBY_BLOCK_OPENER.test(t)) opens++;
+  else if (RUBY_DO_BLOCK.test(t)) opens++; // `while … do` reuses its keyword
+  const ends = t.match(/\bend\b/g)?.length ?? 0;
+  return opens - ends;
+}
 
 function extractRuby(lines: string[]): Sym[] {
   const syms: Sym[] = [];
@@ -389,21 +441,21 @@ function extractRuby(lines: string[]): Sym[] {
         signature: toHeader(raw),
         line: i + 1,
       });
-      depth++;
-      continue;
+    } else {
+      m = t.match(/^def\s+([A-Za-z_][\w?!.=]*)/);
+      if (m) {
+        syms.push({
+          depth,
+          kind: "method",
+          name: m[1],
+          signature: toHeader(raw),
+          line: i + 1,
+        });
+      }
     }
-    m = t.match(/^def\s+([A-Za-z_][\w?!.=]*)/);
-    if (m) {
-      syms.push({
-        depth,
-        kind: "method",
-        name: m[1],
-        signature: toHeader(raw),
-        line: i + 1,
-      });
-      continue;
-    }
-    if (/^end\b/.test(t)) depth = Math.max(0, depth - 1);
+    // Balance openers against `end` so a method's own `end` no longer closes
+    // its enclosing class/module (which sank later siblings to depth 0).
+    depth = Math.max(0, depth + rubyDelta(t));
   }
   return syms;
 }
