@@ -1,8 +1,6 @@
 return {
   'dmtrKovalenko/fff.nvim',
-  -- NOTE: Toggle when in develop mode.
-  -- 'fff.nvim',
-  -- dir = vim.fn.expand 'dir',
+  version = 'v0.10.0',
   lazy = false, -- The plugin lazy-initialises itself
   build = function()
     -- Downloads a prebuilt binary or falls back to cargo build
