@@ -20,10 +20,7 @@ import type {
   ToolResultMessage,
   UserMessage,
 } from "@earendil-works/pi-ai";
-import {
-  matchesKey,
-  visibleWidth,
-} from "@earendil-works/pi-tui";
+import { matchesKey, visibleWidth } from "@earendil-works/pi-tui";
 
 // ── Category definitions ──────────────────────────────────────────────
 
@@ -45,7 +42,7 @@ const ansi256Bg = (code: number, text: string) =>
 function colorForTool(name: string): number {
   let hash = 5381;
   for (let i = 0; i < name.length; i++) {
-    hash = ((hash << 5) + hash) + name.charCodeAt(i);
+    hash = (hash << 5) + hash + name.charCodeAt(i);
   }
   return 16 + (Math.abs(hash) % 240); // skip dark ANSI colors
 }
@@ -58,7 +55,8 @@ function estimateTokens(
   if (typeof content === "string") return Math.ceil(content.length / 4);
   let total = 0;
   for (const block of content) {
-    if (block.type === "text") total += Math.ceil((block.text ?? "").length / 4);
+    if (block.type === "text")
+      total += Math.ceil((block.text ?? "").length / 4);
     else if (block.type === "image") total += 1600;
   }
   return total;
@@ -80,13 +78,13 @@ interface ContextBreakdown {
 
 // Known category label + color config
 const CAT_CONFIG: Record<string, { label: string; color: number }> = {
-  system:     { label: "System Prompt",  color: 141 },
-  user:       { label: "User Messages",   color: 75 },
-  assistant:  { label: "Assistant Text",  color: 114 },
-  thinking:   { label: "Thinking",        color: 216 },
-  compaction: { label: "Compaction",      color: 245 },
-  custom:     { label: "Custom Messages", color: 183 },
-  images:     { label: "Images",          color: 219 },
+  system: { label: "System Prompt", color: 141 },
+  user: { label: "User Messages", color: 75 },
+  assistant: { label: "Assistant Text", color: 114 },
+  thinking: { label: "Thinking", color: 216 },
+  compaction: { label: "Compaction", color: 245 },
+  custom: { label: "Custom Messages", color: 183 },
+  images: { label: "Images", color: 219 },
 };
 
 function computeBreakdown(ctx: any): ContextBreakdown | null {
@@ -97,22 +95,29 @@ function computeBreakdown(ctx: any): ContextBreakdown | null {
   const branch = ctx.sessionManager.getBranch();
 
   const catTokens: Record<string, number> = {};
-  let cacheRead = 0, cacheWrite = 0, totalCost = 0;
-  let turnCount = 0, messageCount = 0;
+  let cacheRead = 0,
+    cacheWrite = 0,
+    totalCost = 0;
+  let turnCount = 0,
+    messageCount = 0;
 
   // System prompt
   try {
     const sys = ctx.getSystemPrompt();
     if (sys) catTokens.system = estimateTokens(sys);
-  } catch { /* not available outside a turn */ }
+  } catch {
+    /* not available outside a turn */
+  }
 
   for (const entry of branch) {
     if (entry.type === "compaction" || entry.type === "branch_summary") {
-      catTokens.compaction = (catTokens.compaction ?? 0) + estimateTokens(entry.summary ?? "");
+      catTokens.compaction =
+        (catTokens.compaction ?? 0) + estimateTokens(entry.summary ?? "");
       continue;
     }
     if (entry.type === "custom_message") {
-      catTokens.custom = (catTokens.custom ?? 0) + estimateTokens(entry.content);
+      catTokens.custom =
+        (catTokens.custom ?? 0) + estimateTokens(entry.content);
       continue;
     }
     if (entry.type !== "message") continue;
@@ -126,8 +131,10 @@ function computeBreakdown(ctx: any): ContextBreakdown | null {
         catTokens.user = (catTokens.user ?? 0) + estimateTokens(um.content);
       } else if (Array.isArray(um.content)) {
         for (const block of um.content) {
-          if (block.type === "text") catTokens.user = (catTokens.user ?? 0) + estimateTokens(block.text);
-          else if (block.type === "image") catTokens.images = (catTokens.images ?? 0) + 1600;
+          if (block.type === "text")
+            catTokens.user = (catTokens.user ?? 0) + estimateTokens(block.text);
+          else if (block.type === "image")
+            catTokens.images = (catTokens.images ?? 0) + 1600;
         }
       }
     } else if (msg.role === "assistant") {
@@ -138,21 +145,29 @@ function computeBreakdown(ctx: any): ContextBreakdown | null {
       totalCost += am.usage.cost.total;
 
       for (const block of am.content) {
-        if (block.type === "text") catTokens.assistant = (catTokens.assistant ?? 0) + estimateTokens(block.text);
-        else if (block.type === "thinking") catTokens.thinking = (catTokens.thinking ?? 0) + estimateTokens(block.thinking);
+        if (block.type === "text")
+          catTokens.assistant =
+            (catTokens.assistant ?? 0) + estimateTokens(block.text);
+        else if (block.type === "thinking")
+          catTokens.thinking =
+            (catTokens.thinking ?? 0) + estimateTokens(block.thinking);
         if ((block as any).type === "tool_use" || (block as any).toolCallId) {
-          catTokens.assistant = (catTokens.assistant ?? 0) + estimateTokens(JSON.stringify((block as any).arguments ?? {}));
+          catTokens.assistant =
+            (catTokens.assistant ?? 0) +
+            estimateTokens(JSON.stringify((block as any).arguments ?? {}));
         }
       }
     } else if (msg.role === "toolResult") {
       const tr = msg as ToolResultMessage;
       catTokens[`tool:${tr.toolName || "unknown"}`] =
-        (catTokens[`tool:${tr.toolName || "unknown"}`] ?? 0) + estimateTokens(tr.content);
+        (catTokens[`tool:${tr.toolName || "unknown"}`] ?? 0) +
+        estimateTokens(tr.content);
     }
   }
 
   // Use SDK total when available; fall back to summed estimates
-  const totalTokens = usage.tokens ?? Object.values(catTokens).reduce((a, b) => a + b, 0);
+  const totalTokens =
+    usage.tokens ?? Object.values(catTokens).reduce((a, b) => a + b, 0);
   const freeTokens = Math.max(0, contextWindow - totalTokens);
 
   // Build ordered category list
@@ -163,7 +178,9 @@ function computeBreakdown(ctx: any): ContextBreakdown | null {
     const cfg = CAT_CONFIG[key];
     if (cfg) {
       categories.push({
-        key, label: cfg.label, tokens,
+        key,
+        label: cfg.label,
+        tokens,
         color: (_th, text) => ansi256Fg(cfg.color, text),
         bar: ansi256Bg(cfg.color, " "),
       });
@@ -171,36 +188,47 @@ function computeBreakdown(ctx: any): ContextBreakdown | null {
   };
 
   // Ordered: known categories first, then tools sorted by size, then rest
-  for (const key of ["system", "user", "assistant", "thinking"]) addCat(key, catTokens[key] ?? 0);
+  for (const key of ["system", "user", "assistant", "thinking"])
+    addCat(key, catTokens[key] ?? 0);
 
   // Tool categories — descending by tokens
   const toolKeys = Object.keys(catTokens)
-    .filter(k => k.startsWith("tool:"))
+    .filter((k) => k.startsWith("tool:"))
     .sort((a, b) => catTokens[b]! - catTokens[a]!);
   for (const key of toolKeys) {
     const name = key.slice(5);
     const col = colorForTool(name);
     categories.push({
-      key, label: `Tool: ${name}`, tokens: catTokens[key]!,
+      key,
+      label: `Tool: ${name}`,
+      tokens: catTokens[key]!,
       color: (_th, text) => ansi256Fg(col, text),
       bar: ansi256Bg(col, " "),
     });
   }
 
-  for (const key of ["compaction", "custom", "images"]) addCat(key, catTokens[key] ?? 0);
+  for (const key of ["compaction", "custom", "images"])
+    addCat(key, catTokens[key] ?? 0);
 
   // Free space
   categories.push({
-    key: "free", label: "Free", tokens: freeTokens,
+    key: "free",
+    label: "Free",
+    tokens: freeTokens,
     color: (_th, text) => ansi256Fg(240, text),
     bar: ansi256Bg(236, " "),
   });
 
   return {
-    categories, totalTokens, contextWindow,
+    categories,
+    totalTokens,
+    contextWindow,
     percent: usage.percent,
-    cacheRead, cacheWrite, totalCost,
-    messageCount, turnCount,
+    cacheRead,
+    cacheWrite,
+    totalCost,
+    messageCount,
+    turnCount,
   };
 }
 
@@ -215,18 +243,22 @@ function renderBar(breakdown: ContextBreakdown, width: number): string {
 
   for (const cat of breakdown.categories) {
     if (cat.tokens <= 0) continue;
-    const cells = Math.max(1, Math.round((cat.tokens / breakdown.contextWindow) * barW));
+    const cells = Math.max(
+      1,
+      Math.round((cat.tokens / breakdown.contextWindow) * barW),
+    );
     const use = Math.min(cells, remaining);
     bar += cat.bar.repeat(use);
     remaining -= use;
     if (remaining <= 0) break;
   }
   if (remaining > 0) {
-    const freeCat = breakdown.categories.find(c => c.key === "free");
+    const freeCat = breakdown.categories.find((c) => c.key === "free");
     bar += (freeCat?.bar ?? ansi256Bg(236, " ")).repeat(remaining);
   }
 
-  const pct = breakdown.percent !== null ? ` ${breakdown.percent.toFixed(1)}%` : "";
+  const pct =
+    breakdown.percent !== null ? ` ${breakdown.percent.toFixed(1)}%` : "";
   return `[${bar}]${pct}`;
 }
 
@@ -246,19 +278,32 @@ function buildOverlay(
   const lines: string[] = [];
   const innerW = width - 2;
 
-  const pad = (s: string, len: number) => s + " ".repeat(Math.max(0, len - visibleWidth(s)));
+  const pad = (s: string, len: number) =>
+    s + " ".repeat(Math.max(0, len - visibleWidth(s)));
   const row = (content: string) =>
-    theme.fg("border", "│") + pad(` ${content}`, innerW) + theme.fg("border", "│");
+    theme.fg("border", "│") +
+    pad(` ${content}`, innerW) +
+    theme.fg("border", "│");
   const hr = () =>
-    theme.fg("border", "│") + theme.fg("dim", "─".repeat(innerW)) + theme.fg("border", "│");
+    theme.fg("border", "│") +
+    theme.fg("dim", "─".repeat(innerW)) +
+    theme.fg("border", "│");
 
   // Top
   lines.push(theme.fg("border", `╭${"─".repeat(innerW)}╮`));
 
   // Title
-  const pct = breakdown.percent !== null ? ` (${breakdown.percent.toFixed(1)}%)` : "";
+  const pct =
+    breakdown.percent !== null ? ` (${breakdown.percent.toFixed(1)}%)` : "";
   lines.push(row(theme.bold(theme.fg("accent", `Context Window Usage${pct}`))));
-  lines.push(row(theme.fg("muted", `${formatTokens(breakdown.totalTokens)} / ${formatTokens(breakdown.contextWindow)} tokens`)));
+  lines.push(
+    row(
+      theme.fg(
+        "muted",
+        `${formatTokens(breakdown.totalTokens)} / ${formatTokens(breakdown.contextWindow)} tokens`,
+      ),
+    ),
+  );
 
   // Bar
   const barStr = renderBar(breakdown, innerW);
@@ -298,10 +343,12 @@ function buildOverlay(
     warnings.push("🔴 Near limit — compaction strongly recommended");
   }
   const biggestTool = breakdown.categories
-    .filter(c => c.key.startsWith("tool:"))
+    .filter((c) => c.key.startsWith("tool:"))
     .sort((a, b) => b.tokens - a.tokens)[0];
   if (biggestTool && biggestTool.tokens > breakdown.contextWindow * 0.2) {
-    warnings.push(`💡 ${biggestTool.label} uses ${((biggestTool.tokens / breakdown.contextWindow) * 100).toFixed(0)}% of context`);
+    warnings.push(
+      `💡 ${biggestTool.label} uses ${((biggestTool.tokens / breakdown.contextWindow) * 100).toFixed(0)}% of context`,
+    );
   }
   if (warnings.length > 0) {
     lines.push(hr());
@@ -325,7 +372,10 @@ export default function (pi: ExtensionAPI) {
     handler: async (_args: string, ctx: ExtensionCommandContext) => {
       const breakdown = computeBreakdown(ctx);
       if (!breakdown) {
-        ctx.ui.notify("No context usage data available yet. Send a message first.", "warning");
+        ctx.ui.notify(
+          "No context usage data available yet. Send a message first.",
+          "warning",
+        );
         return;
       }
 
@@ -334,7 +384,11 @@ export default function (pi: ExtensionAPI) {
           const cachedBreakdown = breakdown;
           return {
             handleInput(data: string) {
-              if (matchesKey(data, "escape") || matchesKey(data, "q") || matchesKey(data, "return")) {
+              if (
+                matchesKey(data, "escape") ||
+                matchesKey(data, "q") ||
+                matchesKey(data, "return")
+              ) {
                 done(undefined);
               }
             },
