@@ -1,6 +1,6 @@
 return {
   'dmtrKovalenko/fff.nvim',
-  version = 'v0.10.0',
+  version = '^0.10.0',
   lazy = false, -- The plugin lazy-initialises itself
   build = function()
     -- Downloads a prebuilt binary or falls back to cargo build
