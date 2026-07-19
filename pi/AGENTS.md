@@ -16,7 +16,7 @@
 ## Workspace & Search Guidelines
 
 - **Targeted Searches:** Always prioritize `fffind` and `ffgrep` using bare identifiers to locate files and patterns efficiently and save token context. Avoid broad, recursive search commands on root.
-- **Large File Defense:** Before reading any file, check its size. If a file is **>150 lines**, do not use `read`. Use targeted `bash` commands (e.g., `sed -n '10,50p'`, `head`, or `tail`) to inspect only the relevant lines.
+- **Large File Defense:** Before reading any file, check its size. If a file is **>150 lines**, do not use `read`. Use targeted `bash` commands (e.g., `sed -n '10,50p'`, `head`, or `tail`) to inspect only the relevant lines. Focus on headers/functions first to understand if it has what you are searching for.
 - **Exclude Noise:** Always filter out unneeded directories using exclusion patterns: `test/,*.min.js,dist/,build/`.
 
 ---
