@@ -9,9 +9,7 @@ This skill covers how to explore pi's internals — its extension architecture, 
 ## Pi installation root
 
 ```
-/opt/homebrew/Cellar/pi-coding-agent/<version>/libexec/lib/node_modules/@earendil-works/pi-coding-agent/
-# or the following and search for the explicit root in the format above
-/opt/homebrew/Cellar/pi-coding-agent/
+/opt/homebrew/lib/node_modules/@earendil-works/pi-coding-agent
 ```
 
 Let `PI_ROOT` denote the path above throughout this skill.
