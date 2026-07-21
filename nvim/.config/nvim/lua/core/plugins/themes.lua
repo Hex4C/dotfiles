@@ -1,18 +1,32 @@
 return {
   'catppuccin/nvim',
   name = 'catppuccin',
+  -- version = '2.0.0',
   priority = 1000,
   opts = {
+    flavour = 'mocha',
     compile_path = vim.fn.stdpath 'cache' .. '/catppuccin',
-    custom_highlights = function(colors)
-      return {
-        Comment = { style = {} }, -- removes italic/bold, making it plain text
-      }
-    end,
+    no_italic = true,
+    no_bold = true,
+    auto_integrations = false,
+    integrations = {
+      alpha = true,
+      blink_cmp = true,
+      flash = true,
+      gitsigns = true,
+      harpoon = true,
+      indent_blankline = { enabled = true },
+      mini = { enabled = true },
+      neotree = true,
+      noice = true,
+      telescope = { enabled = true },
+      snacks = true,
+      which_key = true,
+    },
   },
   config = function(_, opts)
     require('catppuccin').setup(opts)
-    vim.cmd.colorscheme 'catppuccin-mocha'
+    vim.cmd.colorscheme 'catppuccin-nvim'
   end,
 }
 
