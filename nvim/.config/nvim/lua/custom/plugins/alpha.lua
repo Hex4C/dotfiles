@@ -64,6 +64,24 @@ return {
 
     require('alpha').setup(dashboard.opts)
 
+    -- NOTE: Reopen the dashboard when an explorer opened from alpha is closed.
+    local explorer_fts = { oil = true, ['neo-tree'] = true }
+    local came_from_explorer = false
+    vim.api.nvim_create_autocmd('BufEnter', {
+      group = vim.api.nvim_create_augroup('alpha_explorer_restore', { clear = true }),
+      callback = function(args)
+        local ft = vim.bo[args.buf].filetype
+        if explorer_fts[ft] then
+          came_from_explorer = true
+          return
+        end
+        if not came_from_explorer then return end
+        came_from_explorer = false
+        -- only restore alpha if we ended up on a blank, normal buffer
+        if vim.bo[args.buf].buftype == '' and ft == '' and vim.api.nvim_buf_get_name(args.buf) == '' then require('alpha').start(false) end
+      end,
+    })
+
     -- NOTE: Display performance. Always seeing the time it takes makes me
     -- trip and my mind wanders away when working. Will only display the info
     -- if the loadtime is over a predefined threshold.
