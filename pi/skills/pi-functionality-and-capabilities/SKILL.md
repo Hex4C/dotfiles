@@ -14,9 +14,18 @@ This skill covers how to explore pi's internals — its extension architecture, 
 
 Let `PI_ROOT` denote the path above throughout this skill.
 
-## Important: use bash, not built-in tools
+## Searching pi's source
 
-Pi's source lives **outside the project workspace**, so `ffgrep` and `fffind` cannot reach it (they require repo-relative paths). Always use `bash` with `rg`, `fd`, or `find` against `PI_ROOT`.
+Pi's source lives **outside the project workspace**, but `ffgrep` and `fffind` accept absolute and `~/` paths outside the workspace (searched via a separate index), so you can point them straight at `PI_ROOT` without repo-relative paths.
+
+For example:
+
+```
+ffgrep "ExtensionAPI" /opt/homebrew/lib/node_modules/@earendil-works/pi-coding-agent/dist --exclude '*.map'
+fffind "*.d.ts" /opt/homebrew/lib/node_modules/@earendil-works/pi-coding-agent/dist
+```
+
+Fall back to `bash` with `rg`/`fd`/`find` against `PI_ROOT` only when you need flags `ffgrep`/`fffind` don't expose (e.g. file-type filtering with `--type ts`, or `-l` count semantics).
 
 ## Key directories
 
@@ -34,25 +43,29 @@ Pi's source lives **outside the project workspace**, so `ffgrep` and `fffind` ca
 
 ## Search patterns
 
-```bash
+`ffgrep`/`fffind` accept `PI_ROOT` as an absolute or `~` path outside the workspace; add `--exclude` to drop noise like source maps:
+
+```txt
 # Find where a concept is implemented
-rg "ExtensionAPI" PI_ROOT/dist/ --type ts -l
+ffgrep "ExtensionAPI" /opt/homebrew/lib/node_modules/@earendil-works/pi-coding-agent/dist
 
 # Search type declarations for API surfaces
-rg "registerTool|registerCommand|registerProvider" PI_ROOT/dist/ --type ts --include "*.d.ts"
+ffgrep "registerTool|registerCommand|registerProvider" /opt/homebrew/lib/node_modules/@earendil-works/pi-coding-agent/dist --exclude '*.map'
 
 # Find event handlers
-rg "pi\.on\(\"" PI_ROOT/examples/
+ffgrep 'pi\.on\(' /opt/homebrew/lib/node_modules/@earendil-works/pi-coding-agent/examples
 
 # Search docs for a topic
-rg -l "topic" PI_ROOT/docs/
+ffgrep "topic" /opt/homebrew/lib/node_modules/@earendil-works/pi-coding-agent/docs
 
 # List all TypeScript type files
-fd "\.d\.ts$" PI_ROOT/dist/
+fffind "*.d.ts" /opt/homebrew/lib/node_modules/@earendil-works/pi-coding-agent/dist
 
 # Find how a built-in tool works
-fd "read\." PI_ROOT/dist/core/tools/
+fffind "read." /opt/homebrew/lib/node_modules/@earendil-works/pi-coding-agent/dist/core/tools/
 ```
+
+Use `bash` with `rg`/`fd`/`find` only when you need flags these tools don't provide (e.g. `rg --type ts`, `rg -l`, `fd -e ts`).
 
 ## Understanding pi's architecture
 
