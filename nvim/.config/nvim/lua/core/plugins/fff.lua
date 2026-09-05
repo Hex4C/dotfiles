@@ -41,7 +41,7 @@ return {
 
     -- 1. Files & Grep (Handled brilliantly by fff)
     vim.keymap.set('n', '<leader>sf', function() fff.find_files() end, { desc = '[S]earch [F]iles' })
-    vim.keymap.set('n', '<leader>sg', function() fff.live_grep() end, { desc = '[S]earch by [G]rep' })
+    vim.keymap.set('n', '<leader>sg', function() fff.live_grep { grep = { modes = { 'plain', 'fuzzy', 'regex' } } } end, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sw', function() fff.live_grep_under_cursor() end, { desc = '[S]earch current [W]ord' })
 
     -- Search Neovim configuration directory using fff
