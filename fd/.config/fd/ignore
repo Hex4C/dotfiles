@@ -1,0 +1,16 @@
+# ~/.config/fd/ignore
+.git/
+node_modules/
+.cache/
+.npm/
+.cargo/
+.rustup/
+.vscode-server/
+.local/share/
+.venv/
+venv/
+__pycache__/
+go/pkg/
+snap/
+.mozilla/
+.nvm/

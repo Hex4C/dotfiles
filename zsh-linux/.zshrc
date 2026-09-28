@@ -52,7 +52,7 @@ bindkey "^F" fzf-cd-widget
 bindkey -r "^[c"
 
 # Make the Ctrl + f faster with fdfind instead of find
-export FZF_DEFAULT_COMMAND='fdfind --type file'
+export FZF_DEFAULT_COMMAND='fdfind --type file --one-file-system'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export FZF_ALT_C_COMMAND='fdfind --type d --hidden --exclude .git'
