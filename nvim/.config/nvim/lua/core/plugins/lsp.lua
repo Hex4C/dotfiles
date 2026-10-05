@@ -149,6 +149,37 @@ return {
           -- root_markers = { '.clangd', 'compile_commands.json' },
         },
         gopls = {},
+        jdtls = {
+          settings = {
+            java = {
+              format = { enabled = true },
+              project = {
+                sourcePaths = { 'src', 'test' },
+                referencedLibraries = { 'lib/*.jar' },
+              },
+              completion = {
+                filteredTypes = {
+                  -- jdtls defaults (setting this list replaces them, so keep them)
+                  'java.awt.*',
+                  'com.sun.*',
+                  'sun.*',
+                  'jdk.*',
+                  'org.graalvm.*',
+                  'io.micrometer.shaded.*',
+                  -- JUnit 4 types
+                  'org.junit.Test',
+                  'org.junit.Assert',
+                  'org.junit.Before',
+                  'org.junit.After',
+                  'org.junit.BeforeClass',
+                  'org.junit.AfterClass',
+                  'org.junit.Ignore',
+                },
+              },
+            },
+            redhat = { telemetry = { enabled = false } },
+          },
+        },
         ruff = {
           -- root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml', '.git' },
           init_options = {
