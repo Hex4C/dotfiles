@@ -64,3 +64,20 @@ keybind = super+d=text:\x1bd
 # keybind = super+f=text:\x1bf 
 
 tab-inherit-working-directory = true
+
+# Splits: Cmd+Shift+hjkl creates, Cmd+Ctrl+hjkl moves focus (vim directions)
+keybind = super+shift+h=new_split:left
+keybind = super+shift+j=new_split:down
+keybind = super+shift+k=new_split:up
+keybind = super+shift+l=new_split:right
+
+keybind = super+ctrl+h=goto_split:left
+keybind = super+ctrl+j=goto_split:down
+keybind = super+ctrl+k=goto_split:up
+keybind = super+ctrl+l=goto_split:right
+
+# New splits open in the current directory
+split-inherit-working-directory = true
+
+# Optional: dim unfocused splits so you can see which one is active
+ unfocused-split-opacity = 0.85
