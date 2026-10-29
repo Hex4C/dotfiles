@@ -4,6 +4,13 @@ rex.bind("cmd+a", "pane.send_key", { key = "alt+a" })
 rex.bind("cmd+s", "pane.send_key", { key = "alt+s" })
 rex.bind("cmd+d", "pane.send_key", { key = "alt+d" })
 
+-- Resize commands
+rex.bind("cmd+r", "client.mode.enter", { name = "resize" })
+rex.bind("resize/left", "pane.resize", { direction = "left" })
+rex.bind("resize/right", "pane.resize", { direction = "right" })
+rex.bind("resize/up", "pane.resize", { direction = "up" })
+rex.bind("resize/down", "pane.resize", { direction = "down" })
+
 rex.bind(P .. ">shift+5", "pane.split", { direction = "right" }) -- %
 rex.bind(P .. ">shift+'", "pane.split", { direction = "down" }) -- "
 rex.bind(P .. ">v", "pane.split", { direction = "down" })
