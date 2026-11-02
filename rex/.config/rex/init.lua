@@ -58,6 +58,8 @@ rex.bind(P .. ">x", "pane.close")
 rex.bind(P .. ">c", "client.tab.new")
 rex.bind(P .. ">n", "client.tab.next")
 rex.bind(P .. ">p", "client.tab.previous")
+rex.bind(P .. ">shift+.", "client.palette.toggle")
+
 for i = 1, 9 do
 	rex.bind(P .. ">" .. i, "client.tab.goto", { index = i })
 end
