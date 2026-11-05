@@ -16,8 +16,11 @@
       "*": "allow",
       "rm -rf *": "deny",
       "sudo *": "ask",
-      "git *": "ask"
+      "git *": "ask",
+      "git diff": "ask",
+      "git status": "allow"
     },
-    "external_directory": "ask"
+    "external_directory": "ask",
+    "external_directory_read": { "~/.pi/agent/skills/*": "allow" }
   }
 }
