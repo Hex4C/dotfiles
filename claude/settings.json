@@ -1,0 +1,60 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(~/.claude/skills/**)",
+      "Bash(pwd)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)"
+    ],
+    "deny": [
+      "Read(//**/.env)",
+      "Read(//**/.env.*)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.secrets)",
+      "Read(~/Documents/**)",
+      "Read(~/Music/**)",
+      "Read(~/Movies/**)",
+      "Read(~/Library/**)",
+      "Read(~/Pictures/**)",
+      "Bash(find /*)",
+      "Bash(find ~*)",
+      "Bash(git push *)",
+      "Bash(git push)",
+      "Bash(rm -rf *)"
+    ],
+    "ask": ["Bash(rm *)"],
+    "defaultMode": "default"
+  },
+  "model": "opus",
+  "disableArtifact": true,
+  "enabledPlugins": {
+    "cc-plugin-telemetry@builtin": false
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": false,
+    "allowUnsandboxedCommands": false,
+    "failIfUnavailable": true
+  },
+  "effortLevel": "medium",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "medium"
+    },
+    "claude-sonnet-5-5": {
+      "effortLevel": "medium"
+    }
+  },
+  "promptSuggestionEnabled": false,
+  "awaySummaryEnabled": false,
+  "askUserQuestionTimeout": "5m",
+  "autoMemoryEnabled": false,
+  "theme": "dark",
+  "editorMode": "normal",
+  "preferredNotifChannel": "notifications_disabled",
+  "autoCompactEnabled": true,
+  "remoteControlAtStartup": false,
+  "autoUploadSessions": false
+}
