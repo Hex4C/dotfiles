@@ -15,6 +15,8 @@ rex.bind(P .. ">shift+5", "pane.split", { direction = "right" }) -- %
 rex.bind(P .. ">shift+'", "pane.split", { direction = "down" }) -- "
 rex.bind(P .. ">v", "pane.split", { direction = "down" })
 
+rex.bind(P .. ">f", "pane.float")
+
 rex.bind("cmd+l", "pane.split", { direction = "right" })
 
 rex.action({
