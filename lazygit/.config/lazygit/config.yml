@@ -41,7 +41,7 @@ gui:
   splitDiff: auto
   wrapLinesInDiffView: true
 
-  scrollHeight: 2
+  scrollHeight: 10
   scrollPastBottom: true
   scrollOffMargin: 2
   scrollOffBehavior: margin
