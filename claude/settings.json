@@ -1,4 +1,12 @@
 {
+  "env": {
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_FEEDBACK_COMMAND": "1",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
+  },
+  "cleanupPeriodDays": 7,
   "permissions": {
     "allow": [
       "Read(~/.claude/skills/**)",
@@ -27,17 +35,18 @@
     "ask": ["Bash(rm *)"],
     "defaultMode": "default"
   },
-  "model": "opus",
+  "model": "sonnet",
   "disableArtifact": true,
   "enabledPlugins": {
     "cc-plugin-telemetry@builtin": false
   },
   "sandbox": {
     "enabled": true,
+    "failIfUnavailable": true,
     "autoAllowBashIfSandboxed": false,
-    "allowUnsandboxedCommands": false,
-    "failIfUnavailable": true
+    "allowUnsandboxedCommands": false
   },
+  "feedbackDrafts": "quiet",
   "effortLevel": "medium",
   "modelSettings": {
     "claude-opus-5": {
