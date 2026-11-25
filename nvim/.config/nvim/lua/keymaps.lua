@@ -100,3 +100,16 @@ vim.keymap.del('n', 'grt')
 vim.keymap.del('n', 'grr')
 vim.keymap.del('n', 'gri')
 vim.keymap.del('n', 'gra')
+
+-- Merge conflict keymaps
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    if not vim.wo.diff then return end
+
+    vim.opt.diffopt:remove 'linematch:40'
+
+    vim.keymap.set('n', '<leader>mo', '<cmd>diffget LO<cr>', { desc = '[m]erge take [o]urs' })
+    vim.keymap.set('n', '<leader>mt', '<cmd>diffget RE<cr>', { desc = '[m]erge take [t]heirs' })
+    vim.keymap.set('n', '<leader>mb', '<cmd>diffget BA<cr>', { desc = '[m]erge take [b]ase' })
+  end,
+})

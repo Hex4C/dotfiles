@@ -22,6 +22,13 @@
 
 [merge]
 	conflictStyle = zdiff3
+	tool = nvimdiff
+
+[mergetool]
+	keepBackup = false
+
+[mergetool "nvimdiff"]
+	layout = "LOCAL,BASE,REMOTE / MERGED"
 
 [delta]
 	dark = true

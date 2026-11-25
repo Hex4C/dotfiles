@@ -33,11 +33,11 @@ return {
 
       map('n', ']c', function()
         if vim.wo.diff then
-          vim.cmd.normal { '[c', bang = true }
+          vim.cmd.normal { ']c', bang = true }
         else
-          gitsigns.nav_hunk('prev', { navigation_message = false })
+          gitsigns.nav_hunk('next', { navigation_message = false })
         end
-      end, { desc = 'Jump to previous git [c]hange' })
+      end, { desc = 'Jump to next git [c]hange' })
 
       -- Actions
       -- visual mode
